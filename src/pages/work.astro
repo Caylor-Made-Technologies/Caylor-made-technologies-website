@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import projects from '../data/projects.json';
+---
+<Base
+  title="Work"
+  description="Websites and custom tools built by Caylor Made Technologies, including online booking for a bounce house rental company and a housekeeping log for grain mills."
+>
+  <PageHero
+    eyebrow="Work"
+    title="Real tools for real businesses"
+    lead="Each project started with a real problem. Here’s what I built to fix it."
+  />
+
+  <section class="section" aria-label="Projects">
+    <div class="container">
+      <div class="grid projects">
+        {projects.map((p) => <div class="reveal"><ProjectCard project={p} headingLevel="h2" detailed /></div>)}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Your business could be next." text="Got a problem that eats your time every week? Let’s talk about fixing it." />
+</Base>
+
+<style>
+  .projects { --min: 20rem; }
+  .projects > div { display: grid; }
+</style>

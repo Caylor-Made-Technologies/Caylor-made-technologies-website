@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import site from '../data/site.json';
+const updated = 'October 21, 2026';
+---
+<Base title="Privacy Policy" description="What the Caylor Made Technologies website collects, why, and how it's used. Short version: only what you send, only to reply.">
+  <PageHero eyebrow="Legal" title="Privacy Policy" lead={`Last updated ${updated}`} />
+
+  <section class="section">
+    <div class="container--narrow prose">
+      <p class="lead">Short version: this site doesn’t track you, doesn’t use advertising cookies, and only uses what you send through the contact form to reply to you.</p>
+
+      <h2>Who runs this site</h2>
+      <p>{site.name}, run by {site.owner} in {site.city}, {site.region} {site.postalCode}. Questions? Email <a href={`mailto:${site.email}`}>{site.email}</a> or call <a href={`tel:${site.phoneE164}`}>{site.phone}</a>.</p>
+
+      <h2>What the contact form collects</h2>
+      <ul>
+        <li>Your name and email (required)</li>
+        <li>Your phone number and business name (optional)</li>
+        <li>The service you’re interested in and your message</li>
+      </ul>
+      <p>I use this only to reply to you about your project. I don’t sell it, rent it, or add you to a mailing list.</p>
+
+      <h2>Services that help run the form</h2>
+      <ul>
+        <li><strong>Cloudflare</strong> hosts this website and runs Cloudflare Turnstile, a spam check on the contact form. Turnstile looks at basic browser and device signals to tell people from bots. It does not use advertising cookies. See <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener noreferrer" target="_blank">Cloudflare’s privacy policy</a>.</li>
+        <li><strong>Resend</strong> delivers your message to my email inbox. See <a href="https://resend.com/legal/privacy-policy" rel="noopener noreferrer" target="_blank">Resend’s privacy policy</a>.</li>
+      </ul>
+      <p>To block spam, your IP address is kept for up to one hour to limit how many messages can be sent. It is not stored after that.</p>
+
+      <h2>Cookies and analytics</h2>
+      <p>This site uses no tracking or advertising cookies and no analytics. If I add privacy-friendly analytics later (such as Cloudflare Web Analytics, which doesn’t use cookies), I’ll update this page first.</p>
+
+      <h2>How long I keep your message</h2>
+      <p>Messages stay in my email for as long as we’re talking about a project, and for normal business records after that. Ask me any time and I’ll delete your messages within 45 days, unless I’m required by law to keep them.</p>
+
+      <h2>Your choices</h2>
+      <p>You can ask to see, correct, or delete the information you sent me. Email <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+
+      <h2>Children</h2>
+      <p>This site is for businesses and isn’t directed at children under 13. I don’t knowingly collect information from children.</p>
+
+      <h2>Changes</h2>
+      <p>If this policy changes, I’ll update the date at the top of this page.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .prose > * + * { margin-top: 1rem; }
+  .prose h2 { font-size: var(--step-2); margin-top: 2.5rem; }
+  .prose ul { padding-left: 1.25rem; display: grid; gap: 0.5rem; }
+  .prose li::marker { color: var(--blue-glow); }
+</style>

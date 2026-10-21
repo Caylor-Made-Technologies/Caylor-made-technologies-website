@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import CircuitBackground from '../components/CircuitBackground.astro';
+---
+<Base title="Page Not Found" description="That page doesn't exist. Head back to the Caylor Made Technologies home page." noindex>
+  <section class="nf">
+    <CircuitBackground seed={404} density={24} />
+    <div class="container nf__inner">
+      <p class="eyebrow">Error 404</p>
+      <h1><span class="accent">Open circuit.</span> This page isn’t connected.</h1>
+      <p class="lead">The link may be old, or the address may have a typo.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="/">Back to Home</a>
+        <a class="btn btn--ghost" href="/contact/">Contact Me</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf { position: relative; overflow: hidden; min-height: 75svh; display: grid; align-items: center; padding-block: 4rem; }
+  .nf__inner { position: relative; text-align: center; display: grid; justify-items: center; gap: 1rem; }
+  h1 { max-width: 20ch; }
+  .accent { display: block; color: var(--blue-glow); text-shadow: 0 0 30px rgba(61, 139, 255, 0.45); }
+  .btn-row { justify-content: center; margin-top: 0.5rem; }
+</style>

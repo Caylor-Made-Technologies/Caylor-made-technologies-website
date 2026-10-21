@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import site from '../data/site.json';
+
+// TODO: add a photo at src/assets/about/jonathon.jpg and swap the placeholder for <Image>.
+const values = [
+  { icon: 'factory', title: 'Shop-floor background', text: 'Years of industrial maintenance and mill operations. I know downtime costs money.' },
+  { icon: 'wrench', title: 'Practical first', text: 'If a simple tool solves it, that’s what you get. No bloat, no buzzwords.' },
+  { icon: 'chat', title: 'Straight talk', text: 'Plain English, honest timelines, and a real person answering your messages.' },
+] as const;
+---
+<Base
+  title="About"
+  description="Meet Jonathon, the engineer behind Caylor Made Technologies in Hereford, TX. Industrial maintenance background, self-taught software developer."
+>
+  <PageHero eyebrow="About" title="Hi, I’m Jonathon." />
+
+  <section class="section" aria-labelledby="story-title">
+    <div class="container about">
+      <div class="about__photo reveal" role="img" aria-label="Photo of Jonathon coming soon">
+        <span>Photo coming soon</span>
+      </div>
+      <div class="about__text stack">
+        <h2 id="story-title">From the plant floor to code</h2>
+        <p class="lead">I came up through industrial maintenance and mill operations: motors, drives, conveyors, and the paperwork that comes with keeping a plant running.</p>
+        <p>Along the way I taught myself to build software, because I kept seeing problems a simple tool could fix. Checklists on clipboards. Bookings over text. Logs nobody could find.</p>
+        <p>That’s what {site.name} is about. I build websites and practical tools that solve real problems for small and local businesses. When you work with me, you talk directly to the person building it, start to finish.</p>
+        <p>I’m based in {site.city}, Texas, and I work with businesses across the Panhandle and remotely.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="values-title">
+    <div class="container">
+      <h2 id="values-title" class="section-head">How I work</h2>
+      <div class="grid values">
+        {values.map((v) => (
+          <div class="card reveal">
+            <div class="icon-badge"><Icon name={v.icon} /></div>
+            <h3>{v.title}</h3>
+            <p>{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .about {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  @media (min-width: 52rem) {
+    .about { grid-template-columns: 5fr 7fr; }
+  }
+  .about__photo {
+    aspect-ratio: 4 / 5;
+    max-width: 26rem;
+    width: 100%;
+    margin-inline: auto;
+    display: grid;
+    place-items: center;
+    border-radius: calc(var(--radius) + 4px);
+    border: 1px solid var(--border-strong);
+    background:
+      radial-gradient(circle at 50% 30%, rgba(30, 111, 255, 0.25), transparent 60%),
+      repeating-linear-gradient(135deg, var(--surface) 0 14px, var(--surface-raised) 14px 28px);
+    color: var(--text-muted);
+    box-shadow: var(--glow-md);
+  }
+  .about__text { --stack: 1.1rem; max-width: 40rem; }
+  .values { --min: 16rem; }
+</style>

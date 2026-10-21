@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PlanCard from '../components/PlanCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import pricing from '../data/pricing.json';
+
+const care = pricing.carePlan;
+const spots = pricing.spotsLeft;
+---
+<Base
+  title="Services & Pricing"
+  description="Launch pricing for small business websites and custom tools: Starter Website $400, Business Website $900, Custom Tools from $1,500, Care Plan $50/mo."
+>
+  <PageHero
+    eyebrow="Services & Pricing"
+    title="Clear prices. No surprises."
+    lead="Pick what fits your business. Not sure? Book a free 15-minute consult and I’ll point you in the right direction."
+  >
+    <p class="pill">{pricing.launchLabel}{typeof spots === 'number' && ` · ${spots} left`}</p>
+  </PageHero>
+
+  <section class="section" aria-labelledby="plans-title">
+    <div class="container">
+      <h2 id="plans-title" class="visually-hidden">Plans</h2>
+      <div class="grid plans">
+        {pricing.plans.map((plan) => <div class="reveal"><PlanCard plan={plan} showCta /></div>)}
+      </div>
+
+      <article class="card care reveal" aria-labelledby="care-title">
+        <div class="care__head">
+          <div class="icon-badge"><Icon name="wrench" /></div>
+          <div>
+            <h3 id="care-title">{care.name}</h3>
+            <p class="care__price"><span class="amount">${care.price}</span>/{care.per}</p>
+          </div>
+        </div>
+        <p class="care__summary">{care.summary}</p>
+        <ul class="check-list care__list">
+          {care.features.map((f) => <li>{f}</li>)}
+        </ul>
+        <a class="btn btn--ghost" href="/contact/?service=care">Ask about the Care Plan</a>
+      </article>
+
+      <ul class="terms reveal" role="list" aria-label="How it works">
+        {pricing.terms.map((t) => <li><Icon name="check" />{t}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="faq-title">
+    <div class="container--narrow">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq-title">Common questions</h2>
+      </div>
+      <div class="faq">
+        {pricing.faq.map((item) => (
+          <details>
+            <summary><span class="q">{item.q}</span></summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Not sure which one you need?" text="That’s what the free consult is for. 15 minutes, no pressure, and a straight answer." />
+</Base>
+
+<style>
+  .plans { --min: 17rem; }
+  .plans > div { display: grid; }
+
+  .care {
+    margin-top: clamp(1rem, 2.5vw, 1.5rem);
+    display: grid;
+    gap: 1rem 2rem;
+    align-items: center;
+  }
+  @media (min-width: 56rem) {
+    .care { grid-template-columns: auto 1fr auto auto; }
+  }
+  .care__head { display: flex; gap: 1rem; align-items: center; }
+  .care__head .icon-badge { margin: 0; }
+  .care__price { color: var(--text-muted); }
+  .care__price .amount { font-family: var(--font-heading); font-weight: 800; font-size: var(--step-2); color: var(--blue-glow); }
+  .care__list { grid-auto-flow: row; }
+  @media (min-width: 30rem) {
+    .care__list { grid-template-columns: repeat(2, auto); gap: 0.5rem 1.5rem; }
+  }
+
+  .terms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 2rem;
+    margin-top: 2.5rem;
+    color: var(--text-heading);
+    font-weight: 500;
+  }
+  .terms li { display: inline-flex; gap: 0.5rem; align-items: center; }
+  .terms :global(svg) { width: 20px; height: 20px; color: var(--blue-glow); flex: none; }
+
+  .faq { display: grid; gap: 0.75rem; }
+  details {
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.2s;
+  }
+  details[open] { border-color: var(--border-strong); }
+  summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    list-style: none;
+    border-radius: var(--radius-sm);
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: '+';
+    flex: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--blue-glow);
+    transition: transform 0.25s var(--ease);
+  }
+  details[open] summary::after { transform: rotate(45deg); }
+  .q { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 600; color: var(--text-heading); }
+  details p { padding: 0 1.25rem 1.25rem; }
+</style>
