@@ -61,7 +61,6 @@ Automated (`npm test`, 10 tests) and in a real browser against the local Cloudfl
 - [x] 404 page returns HTTP 404 and is `noindex`
 
 ## TODO: things only you can do
-- [ ] **Check the phone number:** the site shows **(896) 705-1950**. Hereford numbers are usually 806. Fix it in `src/data/site.json` if needed.
 - [ ] **Domain:** buy it, then follow "Connect your domain" in the README (update `url` in `site.json`).
 - [ ] **Cloudflare + Resend accounts:** set up and add keys (README → "Deploy to Cloudflare Pages").
 - [ ] **Photo** for the About page (`src/pages/about.astro`, marked TODO).
