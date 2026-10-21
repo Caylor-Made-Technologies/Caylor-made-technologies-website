@@ -11,7 +11,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "node --test tests/*.test.ts"
+    "test": "node --test tests/*.test.ts",
+    "brand": "node tools/make-brand.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
