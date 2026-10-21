@@ -63,7 +63,7 @@ Automated (`npm test`, 10 tests) and in a real browser against the local Cloudfl
 ## TODO: things only you can do
 - [ ] **Domain:** buy it, then follow "Connect your domain" in the README (update `url` in `site.json`).
 - [ ] **Cloudflare + Resend accounts:** set up and add keys (README → "Deploy to Cloudflare Pages").
-- [ ] **Photo** for the About page (`src/pages/about.astro`, marked TODO).
+- [x] Photo on the About page (added 2026-10-21)
 - [ ] **Read the About text** and make it sound like you.
 - [ ] **Confirm with your cousin** that Astro Jumpers can be shown as a portfolio piece.
 - [ ] **Higher-resolution logo files** if you can get them (current ones are cropped from phone screenshots).

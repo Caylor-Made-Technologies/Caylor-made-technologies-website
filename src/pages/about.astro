@@ -1,11 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
 import site from '../data/site.json';
+import photo from '../assets/about/jonathon.jpg';
 
-// TODO: add a photo at src/assets/about/jonathon.jpg and swap the placeholder for <Image>.
 const values = [
   { icon: 'factory', title: 'Shop-floor background', text: 'Years of industrial maintenance and mill operations. I know downtime costs money.' },
   { icon: 'wrench', title: 'Practical first', text: 'If a simple tool solves it, that’s what you get. No bloat, no buzzwords.' },
@@ -20,8 +21,8 @@ const values = [
 
   <section class="section" aria-labelledby="story-title">
     <div class="container about">
-      <div class="about__photo reveal" role="img" aria-label="Photo of Jonathon coming soon">
-        <span>Photo coming soon</span>
+      <div class="about__photo">
+        <Image src={photo} alt="Jonathon, founder of Caylor Made Technologies" widths={[360, 540, 704]} sizes="(min-width: 52rem) 26rem, 92vw" format="webp" loading="eager" />
       </div>
       <div class="about__text stack">
         <h2 id="story-title">From the plant floor to code</h2>
@@ -65,16 +66,13 @@ const values = [
     max-width: 26rem;
     width: 100%;
     margin-inline: auto;
-    display: grid;
-    place-items: center;
+    overflow: hidden;
     border-radius: calc(var(--radius) + 4px);
     border: 1px solid var(--border-strong);
-    background:
-      radial-gradient(circle at 50% 30%, rgba(30, 111, 255, 0.25), transparent 60%),
-      repeating-linear-gradient(135deg, var(--surface) 0 14px, var(--surface-raised) 14px 28px);
-    color: var(--text-muted);
+    background: var(--surface);
     box-shadow: var(--glow-md);
   }
+  .about__photo :global(img) { width: 100%; height: 100%; object-fit: cover; }
   .about__text { --stack: 1.1rem; max-width: 40rem; }
   .values { --min: 16rem; }
 </style>
