@@ -1,0 +1,90 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo-horizontal.png';
+import site from '../data/site.json';
+import Icon from './Icon.astro';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <a href="/" aria-label="Caylor Made Technologies, home" class="brand">
+        <Image src={logo} alt="" width={200} densities={[1, 2]} format="webp" loading="lazy" />
+      </a>
+      <p class="tagline">{site.tagline}</p>
+      <p class="muted small">{site.secondaryLine}</p>
+    </div>
+
+    <nav aria-label="Footer">
+      <h2 class="footer-head">Pages</h2>
+      <ul role="list">
+        <li><a href="/services/">Services &amp; Pricing</a></li>
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/privacy/">Privacy Policy</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <h2 class="footer-head">Contact</h2>
+      <ul role="list" class="contact-list">
+        <li><Icon name="mail" /><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><Icon name="phone" /><a href={`tel:${site.phoneE164}`}>{site.phone}</a></li>
+        <li><Icon name="pin" /><span>{site.serviceAreaText}</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p>&copy; {year} {site.name}. All rights reserved.</p>
+    <p class="est">Est. {site.founded}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 0;
+    padding-top: clamp(3rem, 7vw, 4.5rem);
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    font-size: 0.95rem;
+  }
+  .site-footer__grid {
+    display: grid;
+    gap: 2.25rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 48rem) {
+    .site-footer__grid { grid-template-columns: 1.4fr 1fr 1.4fr; }
+  }
+  .brand { display: inline-block; }
+  .brand :global(img) { width: 200px; }
+  .tagline { margin-top: 1rem; color: var(--text-heading); font-family: var(--font-heading); font-weight: 600; }
+  .small { font-size: 0.9rem; }
+  .footer-head {
+    font-size: 0.8rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+    font-weight: 600;
+  }
+  ul { display: grid; gap: 0.6rem; }
+  a { color: var(--text-body); text-decoration: none; }
+  a:hover { color: #fff; text-decoration: underline; }
+  .contact-list li { display: flex; gap: 0.6rem; align-items: flex-start; }
+  .contact-list :global(svg) { flex: none; width: 18px; height: 18px; margin-top: 0.25rem; color: var(--blue-glow); }
+  .contact-list a { overflow-wrap: anywhere; }
+  .site-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+  .est { letter-spacing: 0.24em; text-transform: uppercase; font-family: var(--font-heading); font-weight: 600; }
+</style>

@@ -1,0 +1,27 @@
+---
+import CircuitBackground from './CircuitBackground.astro';
+interface Props { eyebrow: string; title: string; lead?: string }
+const { eyebrow, title, lead } = Astro.props;
+---
+<section class="page-hero">
+  <CircuitBackground seed={23} density={18} />
+  <div class="container page-hero__inner">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    {lead && <p class="lead">{lead}</p>}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(3.5rem, 9vw, 6rem) clamp(2.5rem, 6vw, 4rem);
+    border-bottom: 1px solid var(--border);
+    background: radial-gradient(60rem 30rem at 50% 0%, rgba(30, 111, 255, 0.14), transparent 70%);
+  }
+  .page-hero__inner { position: relative; max-width: 48rem; text-align: center; }
+  .page-hero__inner > * + * { margin-top: 1rem; }
+  h1 { font-size: var(--step-4); }
+</style>

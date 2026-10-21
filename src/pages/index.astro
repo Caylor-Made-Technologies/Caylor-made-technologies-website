@@ -1,0 +1,176 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import CircuitBackground from '../components/CircuitBackground.astro';
+import PlanCard from '../components/PlanCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import mark from '../assets/brand/logo-mark.png';
+import pricing from '../data/pricing.json';
+import projects from '../data/projects.json';
+import site from '../data/site.json';
+
+const featured = projects.filter((p) => p.featured).slice(0, 2);
+const reasons = [
+  {
+    icon: 'chat',
+    title: 'You talk to the builder',
+    text: 'No sales team, no hand-offs. The person you talk to is the person writing your code.',
+  },
+  {
+    icon: 'split',
+    title: '50% to start, 50% on approval',
+    text: 'You only pay the rest once you’ve seen the finished work and you’re happy with it.',
+  },
+  {
+    icon: 'factory',
+    title: 'I know how real work gets done',
+    text: 'I come from industrial maintenance and plant operations. I build tools for the job, not for show.',
+  },
+] as const;
+---
+<Base
+  title={`${site.name} | Websites & Custom Software in Hereford, TX`}
+  exactTitle
+  description="Websites and custom business software for small and local businesses in Hereford and the Texas Panhandle. Launch pricing from $400. Free 15-minute consult."
+>
+  <section class="hero" aria-labelledby="hero-title">
+    <CircuitBackground seed={7} density={30} />
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <Image src={mark} alt="" width={132} densities={[1, 2]} format="webp" loading="eager" class="hero__mark" />
+      <p class="eyebrow">Web &amp; Software · Est. {site.founded}</p>
+      <h1 id="hero-title">Advanced Engineering. <span class="accent">Built Different.</span></h1>
+      <p class="lead hero__sub">Websites and custom software for local businesses, built by one engineer who talks to you directly.</p>
+      <div class="btn-row hero__ctas">
+        <a class="btn btn--primary" href="/contact/">Book a Free 15-Minute Consult</a>
+        <a class="btn btn--ghost" href="/services/">See Pricing</a>
+      </div>
+      <p class="hero__area muted"><Icon name="pin" /> Hereford, TX &amp; the Texas Panhandle</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">What I build</p>
+        <h2 id="services-title">Simple pricing. Real results.</h2>
+        <p class="pill">{pricing.launchLabel}</p>
+      </div>
+      <div class="grid services-grid">
+        {pricing.plans.map((plan) => <div class="reveal"><PlanCard plan={plan} /></div>)}
+      </div>
+      <p class="care-note">
+        Add the <strong>{pricing.carePlan.name}</strong> for <strong>${pricing.carePlan.price}/{pricing.carePlan.per}</strong>: hosting, updates, fixes, and support.
+        <a href="/services/">See full pricing <span aria-hidden="true">→</span></a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="why-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Why work with me</p>
+        <h2 id="why-title">One engineer. Straight answers.</h2>
+      </div>
+      <div class="grid why-grid">
+        {reasons.map((r) => (
+          <div class="why reveal">
+            <div class="icon-badge"><Icon name={r.icon} /></div>
+            <h3>{r.title}</h3>
+            <p>{r.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="work-title">
+    <div class="container">
+      <div class="section-head work-head">
+        <div>
+          <p class="eyebrow">Recent work</p>
+          <h2 id="work-title">Built for real businesses</h2>
+        </div>
+        <a class="btn btn--ghost" href="/work/">See all work</a>
+      </div>
+      <div class="grid work-grid">
+        {featured.map((p) => <div class="reveal"><ProjectCard project={p} /></div>)}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: min(92svh, 52rem);
+    display: grid;
+    align-items: center;
+    padding-block: clamp(3rem, 8vw, 6rem);
+  }
+  .hero__glow {
+    position: absolute;
+    inset: -20% -10% auto;
+    height: 80%;
+    background: radial-gradient(closest-side, rgba(30, 111, 255, 0.22), transparent);
+    pointer-events: none;
+  }
+  .hero__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.1rem;
+  }
+  .hero__mark {
+    width: clamp(96px, 22vw, 132px);
+    height: auto;
+    filter: drop-shadow(0 0 28px rgba(61, 139, 255, 0.45));
+  }
+  .hero h1 { max-width: 16ch; font-size: clamp(2.3rem, 1.5rem + 4vw, 4.4rem); }
+  .hero h1 .accent { color: var(--blue-glow); text-shadow: 0 0 34px rgba(61, 139, 255, 0.45); }
+  .hero__sub { max-width: 36rem; }
+  .hero__ctas { justify-content: center; margin-top: 0.5rem; }
+  .hero__area { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; }
+  .hero__area :global(svg) { width: 16px; height: 16px; color: var(--blue-glow); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__inner > * { animation: hero-in 0.8s var(--ease) both; }
+    .hero__inner > :nth-child(2) { animation-delay: 0.08s; }
+    .hero__inner > :nth-child(3) { animation-delay: 0.16s; }
+    .hero__inner > :nth-child(4) { animation-delay: 0.24s; }
+    .hero__inner > :nth-child(5) { animation-delay: 0.32s; }
+    .hero__inner > :nth-child(6) { animation-delay: 0.4s; }
+  }
+  @keyframes hero-in { from { opacity: 0; transform: translateY(14px); } }
+
+  .services-grid { --min: 17rem; }
+  .services-grid > div { display: grid; }
+  .care-note {
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--text-body);
+  }
+  .care-note a { white-space: nowrap; margin-left: 0.25rem; }
+
+  .why-grid { --min: 16rem; }
+  .why h3 { margin-bottom: 0.4rem; }
+
+  .work-head {
+    max-width: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .work-head > div > * + * { margin-top: 0.85rem; }
+  .work-grid { --min: 20rem; }
+  .work-grid > div { display: grid; }
+</style>

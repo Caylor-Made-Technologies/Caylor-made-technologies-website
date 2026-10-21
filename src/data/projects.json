@@ -1,0 +1,28 @@
+[
+  {
+    "slug": "astro-jumpers",
+    "title": "Astro Jumpers",
+    "type": "Website + online booking",
+    "problem": "A local bounce house rental business needed customers to see what's open and book without phone tag.",
+    "built": "A fast, mobile-first website with live availability, online booking, and a simple admin page the owner runs from a phone.",
+    "tech": ["HTML", "CSS", "JavaScript", "Supabase", "Serverless email"],
+    "image": "astro-jumpers.jpg",
+    "imageAlt": "Astro Jumpers home page with an astronaut bounce house logo and a Book Now button",
+    "url": "https://caylor-made-technologies.github.io/astro-jumpers-website/",
+    "linkLabel": "Visit site",
+    "featured": true
+  },
+  {
+    "slug": "mill-housekeeping-log",
+    "title": "Mill Housekeeping Log",
+    "type": "Custom web app",
+    "problem": "Dust and debris checks in industrial grain mills were tracked on paper, so missed areas were easy to overlook.",
+    "built": "A mobile-first app that shows which areas are due or overdue, logs each inspection with a photo, and saves to the device so it keeps working where the signal is bad.",
+    "tech": ["HTML", "CSS", "JavaScript", "IndexedDB", "On-device storage"],
+    "image": "mill-housekeeping-log.jpg",
+    "imageAlt": "Mill Housekeeping Log app showing a list of inspection areas marked Due",
+    "url": "https://caylor-made-technologies.github.io/grain-mill-dust-log/",
+    "linkLabel": "Try the demo",
+    "featured": true
+  }
+]

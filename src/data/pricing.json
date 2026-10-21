@@ -1,0 +1,67 @@
+{
+  "launchLabel": "Launch Pricing: First 5 Clients Only",
+  "spotsLeft": null,
+  "plans": [
+    {
+      "id": "starter",
+      "name": "Starter Website",
+      "price": 400,
+      "priceNote": "",
+      "summary": "A clean, professional site that gets you found and gets you calls.",
+      "features": ["Up to 5 pages", "Looks great on phones", "Contact form", "Domain setup"],
+      "featured": false
+    },
+    {
+      "id": "business",
+      "name": "Business Website",
+      "price": 900,
+      "priceNote": "",
+      "summary": "For businesses ready to take quotes or bookings online.",
+      "features": ["Up to 8 pages", "Quote or booking forms", "Google Business Profile setup", "Basic SEO"],
+      "featured": true
+    },
+    {
+      "id": "custom",
+      "name": "Custom Tools & Automation",
+      "price": 1500,
+      "priceNote": "starting at",
+      "summary": "Software built around how your business already works.",
+      "features": ["Trackers and checklists", "Scheduling and inventory", "Reporting", "Business automation"],
+      "featured": false
+    }
+  ],
+  "carePlan": {
+    "name": "Monthly Care Plan",
+    "price": 50,
+    "per": "mo",
+    "summary": "I keep your site running so you don't have to think about it.",
+    "features": ["Hosting", "Updates", "Fixes", "Support"]
+  },
+  "terms": ["50% to start, 50% when you approve it", "Free 15-minute consult", "You talk directly to the person building it"],
+  "faq": [
+    {
+      "q": "How long does a website take?",
+      "a": "Most Starter sites are done in 1–2 weeks and Business sites in 2–4 weeks, once I have your content. Custom tools depend on the size of the job. I'll give you a timeline before you pay anything."
+    },
+    {
+      "q": "What do I need to give you?",
+      "a": "Your logo, photos of your work, the services you offer, your prices if you want them shown, and how customers should reach you. If you don't have something yet, I'll help you put it together."
+    },
+    {
+      "q": "Who owns the website?",
+      "a": "You do. Your domain is registered in your name, and once the final payment is made the site and its content are yours. If you ever leave, I'll help you move it."
+    },
+    {
+      "q": "What does the Care Plan cover?",
+      "a": "Hosting, security and software updates, small fixes, and text or photo changes when you need them. Bigger additions, like new pages or features, are quoted separately so there are no surprises."
+    },
+    {
+      "q": "Do I have to sign up for the Care Plan?",
+      "a": "No. It's optional. Without it, you handle your own hosting and I'm available for paid fixes when you need them."
+    },
+    {
+      "q": "How does payment work?",
+      "a": "50% to start the work, and the other 50% when you've seen the finished site and approved it. Domain and any third-party fees are passed through at cost and listed up front."
+    }
+  ]
+}

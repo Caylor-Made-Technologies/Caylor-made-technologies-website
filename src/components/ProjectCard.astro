@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+
+interface Project {
+  slug: string; title: string; type: string; problem: string; built: string;
+  tech: string[]; image: string; imageAlt: string; url: string; linkLabel: string;
+}
+interface Props { project: Project; headingLevel?: 'h2' | 'h3'; detailed?: boolean }
+const { project, headingLevel = 'h3', detailed = false } = Astro.props;
+const Heading = headingLevel;
+
+// Screenshots live in src/assets/projects/. A missing file shows a placeholder.
+const images = import.meta.glob<{ default: ImageMetadata }>('../assets/projects/*.{png,jpg,jpeg,webp}');
+const key = `../assets/projects/${project.image}`;
+const img = images[key] ? (await images[key]()).default : null;
+const isExternal = /^https?:\/\//.test(project.url);
+---
+<article class="card card--hover project">
+  <div class="project__shot">
+    {img ? (
+      <Image src={img} alt={project.imageAlt} widths={[400, 640, 960]} sizes="(min-width: 64rem) 34rem, (min-width: 48rem) 45vw, 92vw" format="webp" loading="lazy" />
+    ) : (
+      <div class="project__placeholder" role="img" aria-label="Screenshot coming soon">Screenshot coming soon</div>
+    )}
+  </div>
+  <p class="eyebrow project__type">{project.type}</p>
+  <Heading class="project__title">{project.title}</Heading>
+  {detailed ? (
+    <dl class="project__details">
+      <div><dt>The problem</dt><dd>{project.problem}</dd></div>
+      <div><dt>What I built</dt><dd>{project.built}</dd></div>
+    </dl>
+  ) : (
+    <p>{project.problem}</p>
+  )}
+  <ul class="tag-list" aria-label="Built with">
+    {project.tech.map((t) => <li>{t}</li>)}
+  </ul>
+  {project.url ? (
+    <a
+      class="project__link"
+      href={project.url}
+      {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+    >
+      {project.linkLabel} <span class="visually-hidden">: {project.title}{isExternal ? ' (opens in a new tab)' : ''}</span>
+      <Icon name={isExternal ? 'external' : 'arrow'} />
+    </a>
+  ) : (
+    <p class="muted project__soon">Coming soon</p>
+  )}
+</article>
+
+<style>
+  .project { display: flex; flex-direction: column; gap: 0.75rem; padding: 0.75rem 0.75rem 1.5rem; }
+  .project > :not(.project__shot) { margin-inline: 0.75rem; }
+  .project__shot {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: calc(var(--radius) - 4px);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    margin-bottom: 0.5rem;
+  }
+  .project__shot :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.6s var(--ease); }
+  .project:hover .project__shot :global(img) { transform: scale(1.03); }
+  .project__placeholder {
+    display: grid; place-items: center; height: 100%;
+    color: var(--text-muted);
+    background: repeating-linear-gradient(135deg, var(--surface) 0 12px, var(--surface-raised) 12px 24px);
+  }
+  .project__title { font-size: var(--step-2); }
+  .project__details { display: grid; gap: 0.75rem; }
+  .project__details dt { font-weight: 600; color: var(--text-heading); font-size: 0.9rem; }
+  .project__details dd { margin: 0; }
+  .project__link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    margin-top: auto; padding-top: 0.5rem;
+    font-weight: 600; text-decoration: none; align-self: flex-start;
+  }
+  .project__link :global(svg) { width: 18px; height: 18px; }
+  .project__link:hover { text-decoration: underline; }
+</style>

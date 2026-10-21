@@ -1,0 +1,37 @@
+---
+interface Props { title?: string; text?: string }
+const {
+  title = 'Ready to get your business online the right way?',
+  text = 'Book a free 15-minute call. Tell me what you need, and I’ll tell you straight what it takes and what it costs.',
+} = Astro.props;
+---
+<section class="section cta-band" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-band__panel reveal">
+      <h2 id="cta-title">{title}</h2>
+      <p class="lead">{text}</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="/contact/">Book a Free 15-Minute Consult</a>
+        <a class="btn btn--ghost" href="/services/">See Pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band__panel {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 3rem);
+    border-radius: calc(var(--radius) + 6px);
+    border: 1px solid var(--border-strong);
+    background:
+      radial-gradient(40rem 18rem at 50% 120%, rgba(30, 111, 255, 0.35), transparent 70%),
+      linear-gradient(180deg, var(--surface-raised), var(--surface));
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  }
+  .cta-band__panel > * + * { margin-top: 1rem; }
+  .lead { max-width: 40rem; margin-inline: auto; }
+  .btn-row { justify-content: center; margin-top: 1.75rem; }
+</style>

@@ -1,0 +1,167 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo-horizontal.png';
+import Icon from './Icon.astro';
+
+const nav = [
+  { href: '/services/', label: 'Services & Pricing' },
+  { href: '/work/', label: 'Work' },
+  { href: '/about/', label: 'About' },
+  { href: '/contact/', label: 'Contact' },
+];
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => path === href || path.startsWith(href);
+---
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Caylor Made Technologies, home">
+      <Image src={logo} alt="" width={168} densities={[1, 2]} format="webp" loading="eager" fetchpriority="high" class="brand__logo" />
+    </a>
+
+    <nav class="nav-desktop" aria-label="Main">
+      <ul role="list">
+        {nav.map((item) => (
+          <li><a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a></li>
+        ))}
+      </ul>
+      <a class="btn btn--primary nav-desktop__cta" href="/contact/">Book a Free Consult</a>
+    </nav>
+
+    <button class="menu-btn" type="button" popovertarget="mobile-nav" aria-controls="mobile-nav">
+      <Icon name="menu" />
+      <span class="visually-hidden">Open menu</span>
+    </button>
+  </div>
+</header>
+
+<nav id="mobile-nav" class="nav-mobile" popover aria-label="Main">
+  <div class="nav-mobile__top">
+    <span class="eyebrow">Menu</span>
+    <button class="menu-btn" type="button" popovertarget="mobile-nav" popovertargetaction="hide">
+      <Icon name="close" />
+      <span class="visually-hidden">Close menu</span>
+    </button>
+  </div>
+  <ul role="list">
+    <li><a href="/" aria-current={path === '/' ? 'page' : undefined}>Home</a></li>
+    {nav.map((item) => (
+      <li><a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a></li>
+    ))}
+  </ul>
+  <a class="btn btn--primary btn--block" href="/contact/">Book a Free 15-Minute Consult</a>
+</nav>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 50;
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    background: rgba(11, 15, 20, 0.72);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid transparent;
+  }
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .brand { display: block; flex: none; border-radius: 6px; }
+  .brand__logo { width: 168px; height: auto; }
+
+  /* Shrink on scroll: CSS scroll-driven animation; static header elsewhere. */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+      .site-header {
+        animation: header-shrink linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 140px;
+      }
+      .brand__logo {
+        animation: logo-shrink linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 140px;
+      }
+    }
+  }
+  @keyframes header-shrink {
+    to {
+      height: 60px;
+      background: rgba(11, 15, 20, 0.92);
+      border-bottom-color: var(--border);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    }
+  }
+  @keyframes logo-shrink { to { width: 140px; } }
+
+  .nav-desktop { display: none; }
+  .nav-desktop ul { display: flex; gap: 0.25rem; }
+  .nav-desktop a:not(.btn) {
+    display: block;
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    color: var(--text-body);
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.2s, background-color 0.2s;
+  }
+  .nav-desktop a:not(.btn):hover { color: #fff; background: rgba(30, 111, 255, 0.1); }
+  .nav-desktop a[aria-current='page'] { color: #fff; box-shadow: inset 0 -2px 0 var(--blue-glow); border-radius: 8px 8px 0 0; }
+  .nav-desktop__cta { min-height: 42px; padding: 0.6rem 1.1rem; font-size: 0.9rem; }
+
+  .menu-btn {
+    display: grid;
+    place-items: center;
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    border: 1px solid var(--border-strong);
+    background: rgba(26, 34, 48, 0.7);
+    color: #fff;
+  }
+  .menu-btn :global(svg) { width: 24px; height: 24px; }
+
+  @media (min-width: 60rem) {
+    .nav-desktop { display: flex; align-items: center; gap: 1rem; }
+    .site-header .menu-btn { display: none; }
+  }
+
+  /* Mobile menu (native popover: no JavaScript) */
+  .nav-mobile {
+    inset: 0 0 auto auto;
+    width: min(100%, 24rem);
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 1rem var(--gutter) 2rem;
+    border: 0;
+    border-left: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-body);
+  }
+  .nav-mobile:popover-open { display: flex; flex-direction: column; gap: 1.5rem; }
+  .nav-mobile::backdrop { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(2px); }
+  .nav-mobile__top { display: flex; justify-content: space-between; align-items: center; }
+  .nav-mobile ul { display: grid; gap: 0.25rem; }
+  .nav-mobile a:not(.btn) {
+    display: block;
+    padding: 0.9rem 0.75rem;
+    border-radius: 10px;
+    color: var(--text-heading);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.15rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+  }
+  .nav-mobile a:not(.btn):hover { background: rgba(30, 111, 255, 0.1); }
+  .nav-mobile a[aria-current='page'] { border-color: var(--border-strong); background: rgba(30, 111, 255, 0.1); }
+  @media (prefers-reduced-motion: no-preference) {
+    .nav-mobile:popover-open { animation: slide-in 0.3s var(--ease); }
+  }
+  @keyframes slide-in { from { transform: translateX(100%); } }
+</style>

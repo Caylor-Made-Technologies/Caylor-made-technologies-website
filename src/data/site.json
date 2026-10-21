@@ -1,0 +1,18 @@
+{
+  "name": "Caylor Made Technologies",
+  "url": "https://caylor-made-technologies.pages.dev",
+  "tagline": "Advanced Engineering. Built Different.",
+  "secondaryLine": "Full Stack Innovation. One Mind, Infinite Possibilities.",
+  "founded": "2026",
+  "owner": "Jonathon Caylor",
+  "email": "jonathoncaylor2@gmail.com",
+  "phone": "(896) 705-1950",
+  "phoneE164": "+18967051950",
+  "city": "Hereford",
+  "region": "TX",
+  "postalCode": "79045",
+  "country": "US",
+  "serviceAreaText": "Hereford, TX & the Texas Panhandle — remote clients welcome.",
+  "serviceArea": ["Hereford", "Amarillo", "Canyon", "Dumas", "Dimmitt", "Friona", "Vega", "Texas Panhandle"],
+  "geo": { "latitude": 34.8151, "longitude": -102.3977 }
+}

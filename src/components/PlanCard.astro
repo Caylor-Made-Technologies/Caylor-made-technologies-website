@@ -1,0 +1,60 @@
+---
+import Icon from './Icon.astro';
+interface Plan {
+  id: string; name: string; price: number; priceNote: string;
+  summary: string; features: string[]; featured: boolean;
+}
+interface Props { plan: Plan; headingLevel?: 'h2' | 'h3'; showCta?: boolean }
+const { plan, headingLevel = 'h3', showCta = false } = Astro.props;
+const Heading = headingLevel;
+const icons = { starter: 'globe', business: 'building', custom: 'gears' } as const;
+const icon = icons[plan.id as keyof typeof icons] ?? 'globe';
+const price = `$${plan.price.toLocaleString('en-US')}`;
+---
+<article class:list={['card', 'card--hover', 'plan', { 'plan--featured': plan.featured }]}>
+  {plan.featured && <p class="plan__flag">Most popular</p>}
+  <div class="icon-badge"><Icon name={icon} /></div>
+  <Heading class="plan__name">{plan.name}</Heading>
+  <p class="plan__price">
+    {plan.priceNote && <span class="plan__note">{plan.priceNote}</span>}
+    <span class="plan__amount">{price}</span>
+  </p>
+  <p class="plan__summary">{plan.summary}</p>
+  <ul class="check-list">
+    {plan.features.map((f) => <li>{f}</li>)}
+  </ul>
+  {showCta && (
+    <a class="btn btn--ghost btn--block plan__cta" href={`/contact/?service=${plan.id}`}>
+      Ask about {plan.name}
+    </a>
+  )}
+</article>
+
+<style>
+  .plan { display: flex; flex-direction: column; }
+  .plan--featured { border-color: var(--border-strong); box-shadow: var(--glow-sm); }
+  .plan__flag {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--blue-button);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+  }
+  .plan__price { margin-top: 0.75rem; display: flex; flex-direction: column; line-height: 1.1; }
+  .plan__note { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+  .plan__amount {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: var(--step-3);
+    color: var(--blue-glow);
+    text-shadow: 0 0 24px rgba(61, 139, 255, 0.35);
+  }
+  .plan__summary { margin-block: 0.75rem 1.25rem; }
+  .check-list { margin-bottom: 1.5rem; }
+  .plan__cta { margin-top: auto; }
+</style>
