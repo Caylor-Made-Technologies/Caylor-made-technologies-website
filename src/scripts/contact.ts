@@ -43,8 +43,9 @@ if (form) {
   const select = form.elements.namedItem('service') as HTMLSelectElement | null;
   if (pre && select && pre in SERVICES) select.value = pre;
 
-  // Re-check a field once the visitor leaves it, if it already showed an error.
-  form.addEventListener('focusout', (e) => {
+  // Clear a field's error as soon as it's fixed (while typing, so the layout
+  // doesn't shift under the visitor's finger when they tap Send).
+  const recheck = (e: Event) => {
     const el = e.target as HTMLInputElement;
     if (el.getAttribute('aria-invalid') !== 'true') return;
     const { errors } = validateContact(Object.fromEntries(new FormData(form)));
@@ -52,7 +53,9 @@ if (form) {
     const msg = errors[el.name as keyof FieldErrors] ?? '';
     el.setAttribute('aria-invalid', msg ? 'true' : 'false');
     if (slot) slot.textContent = msg;
-  });
+  };
+  form.addEventListener('input', recheck);
+  form.addEventListener('change', recheck);
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
