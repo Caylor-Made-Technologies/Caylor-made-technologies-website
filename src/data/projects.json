@@ -33,9 +33,9 @@
     "built": "An installable phone app that diagnoses problems from plain-English symptoms and OBD-II trouble codes. Tap through what you notice and where, and get answers in plain English from a machine-learning model I trained myself that runs right on the phone, offline and free. It knows the common problems of nearly 200 vehicles, explains dashboard lights, finds a mechanic nearby, and adds maintenance reminders to the phone's calendar.",
     "tech": ["Python", "scikit-learn", "JavaScript", "PWA", "GitHub Actions"],
     "image": "car-doctor.jpg",
-    "imageAlt": "Three Car Doctor phone screens: tap-to-pick symptom tiles, a diagnosis with a gauge dial and a known-problem note, and a vehicle's known problems",
-    "url": "https://caylor-made-technologies.github.io/car-doctor/",
-    "linkLabel": "Try the app",
-    "featured": false
+    "imageAlt": "Three Car Doctor phone screens: tap-to-pick symptom tiles, noise choices with listen buttons, and a diagnosis with a gauge dial and a known-problem note",
+    "url": "/car-doctor/",
+    "linkLabel": "See Car Doctor",
+    "featured": true
   }
 ]

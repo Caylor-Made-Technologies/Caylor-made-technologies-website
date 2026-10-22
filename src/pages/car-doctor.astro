@@ -1,0 +1,151 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import shot from '../assets/projects/car-doctor.jpg';
+import appIcon from '../assets/projects/car-doctor-icon.png';
+
+const appUrl = 'https://caylor-made-technologies.github.io/car-doctor/';
+
+const features = [
+  { icon: 'chat', title: 'Just tap or tell it', text: 'Tap what you notice (a noise, a smell, a warning light) and where it comes from, or type it in your own words. No car knowledge needed.' },
+  { icon: 'check', title: 'Answers in plain English', text: 'What’s going on, whether it’s safe to drive, and what to do next. Car words are underlined; tap one to see what it means.' },
+  { icon: 'gears', title: 'Asks smart questions', text: 'When two problems look alike, it asks one simple question anyone can answer, like whether the dash lights stay bright.' },
+  { icon: 'wrench', title: 'Knows your vehicle', text: 'Add your year, make and model to see the problems it’s known for. Answers mention it when your problem is a common one.' },
+  { icon: 'phone', title: 'Help when you need it', text: 'One tap to Texas roadside help, a tow truck, or a mechanic near you for the bigger jobs.' },
+  { icon: 'clock', title: 'Reminders and a repair log', text: 'Oil changes, tires and brakes go straight into your phone’s calendar, and your repair history stays on your phone.' },
+];
+
+const steps = [
+  { title: 'iPhone', text: 'Open the app in Safari, tap the Share button, then “Add to Home Screen”.' },
+  { title: 'Android', text: 'Open the app in Chrome, tap the ⋮ menu, then “Install app” or “Add to Home screen”.' },
+  { title: 'That’s it', text: 'Open it once while online. After that it works with no signal.' },
+];
+---
+<Base
+  title="Car Doctor"
+  description="Car Doctor is a free phone app by Caylor Made Technologies that explains car and truck problems in plain English. Works offline, and your data stays on your phone."
+>
+  <PageHero
+    eyebrow="Free app"
+    title="Car Doctor"
+    lead="Figure out what’s wrong with your car or truck in plain English, without knowing anything about cars. Free, works offline, and private."
+  >
+    <Image class="app-icon" src={appIcon} alt="" width={112} height={112} loading="eager" />
+    <div class="btn-row hero-ctas">
+      <a class="btn btn--primary" href={appUrl} target="_blank" rel="noopener noreferrer">
+        Open Car Doctor <Icon name="external" /><span class="visually-hidden"> (opens in a new tab)</span>
+      </a>
+      <a class="btn btn--ghost" href="#install">How to install</a>
+    </div>
+  </PageHero>
+
+  <section class="section" aria-labelledby="shots-title">
+    <div class="container">
+      <h2 id="shots-title" class="visually-hidden">Screenshots</h2>
+      <div class="shot reveal">
+        <Image src={shot} alt="Three Car Doctor phone screens: symptom tiles to tap, noise choices with listen buttons, and a diagnosis with a gauge dial and a known-problem note" widths={[480, 800, 1200, 1600]} sizes="(min-width: 72rem) 70rem, 94vw" format="webp" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="features-title">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">What it does</p>
+        <h2 id="features-title">Like asking a friend who knows cars</h2>
+      </div>
+      <ul class="grid features" role="list">
+        {features.map((f) => (
+          <li class="card reveal">
+            <span class="feature-icon"><Icon name={f.icon} /></span>
+            <h3>{f.title}</h3>
+            <p>{f.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="install" aria-labelledby="install-title">
+    <div class="container container--narrow">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">Install</p>
+        <h2 id="install-title">Put it on your home screen</h2>
+        <p class="muted">No app store needed. It installs right from the browser.</p>
+      </div>
+      <ol class="steps" role="list">
+        {steps.map((s, i) => (
+          <li class="card reveal">
+            <span class="step-num" aria-hidden="true">{i + 1}</span>
+            <div><h3>{s.title}</h3><p>{s.text}</p></div>
+          </li>
+        ))}
+      </ol>
+      <div class="btn-row center">
+        <a class="btn btn--primary" href={appUrl} target="_blank" rel="noopener noreferrer">
+          Open Car Doctor <Icon name="external" /><span class="visually-hidden"> (opens in a new tab)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="privacy-title">
+    <div class="container container--narrow stack">
+      <p class="eyebrow">Privacy</p>
+      <h2 id="privacy-title">Your data stays on your phone</h2>
+      <p>No account, no ads, no tracking. Your vehicle, repair log, reminders and answers are saved only on your phone, and you can delete them any time inside the app. The diagnosis runs on your phone too, so nothing you type is sent anywhere.</p>
+      <p class="muted">Car Doctor gives guidance only. It isn’t a professional inspection and can be wrong. If something feels unsafe, don’t drive it and have a qualified mechanic check it.</p>
+    </div>
+  </section>
+
+  <CtaBand title="Want an app like this for your business?" text="I build custom tools that solve real problems, like this one. Book a free 15-minute call and tell me what you need." />
+</Base>
+
+<style>
+  :global(.page-hero) .app-icon {
+    display: block;
+    margin: 1.5rem auto 0;
+    border-radius: 26px;
+    box-shadow: 0 0 0 1px var(--border-strong), 0 0 40px rgba(61, 139, 255, 0.35);
+  }
+  .hero-ctas { justify-content: center; margin-top: 1.5rem; }
+  .hero-ctas :global(svg), .center :global(svg) { width: 18px; height: 18px; }
+  .shot img, .shot :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: calc(var(--radius) + 4px);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--glow-md);
+  }
+  .features { --min: 17rem; list-style: none; padding: 0; }
+  .feature-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 0.75rem;
+    border-radius: 12px;
+    color: var(--blue-glow);
+    background: rgba(30, 111, 255, 0.12);
+    box-shadow: inset 0 0 0 1px var(--border-strong);
+  }
+  .feature-icon :global(svg) { width: 22px; height: 22px; }
+  .steps { display: grid; gap: 1rem; list-style: none; padding: 0; margin-bottom: 2rem; }
+  .steps li { display: flex; gap: 1rem; align-items: flex-start; }
+  .step-num {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-weight: 700;
+    color: #fff;
+    background: var(--blue-button);
+    box-shadow: 0 0 18px rgba(61, 139, 255, 0.4);
+  }
+  .center { justify-content: center; }
+</style>
