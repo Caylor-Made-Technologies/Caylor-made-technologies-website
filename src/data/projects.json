@@ -34,8 +34,8 @@
     "tech": ["Python", "scikit-learn", "JavaScript", "PWA", "GitHub Actions"],
     "image": "car-doctor.jpg",
     "imageAlt": "Three Car Doctor phone screens: a symptom chat, a worn brake pads diagnosis in plain English, and maintenance reminders",
-    "url": "https://github.com/Caylor-Made-Technologies/car-doctor",
-    "linkLabel": "See the code",
+    "url": "https://caylor-made-technologies.github.io/car-doctor/",
+    "linkLabel": "Try the app",
     "featured": false
   }
 ]
