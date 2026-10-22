@@ -30,10 +30,10 @@
     "title": "Car Doctor",
     "type": "Offline app + machine learning",
     "problem": "Figuring out what's wrong with a car or truck usually means guessing, searching forums, or paying for a diagnosis before you even know where to look.",
-    "built": "An installable phone app that diagnoses problems from plain-English symptoms and OBD-II trouble codes. It runs a machine-learning model I trained myself right on the phone, so it works offline with no ongoing costs, and it keeps a repair log for the vehicle.",
+    "built": "An installable phone app that diagnoses problems from plain-English symptoms and OBD-II trouble codes. Answers come in plain English for people who don't know cars, with tap-to-explain terms. It runs a machine-learning model I trained myself right on the phone, so it works offline with no ongoing costs, and it keeps a repair log and adds maintenance reminders to the phone's calendar.",
     "tech": ["Python", "scikit-learn", "JavaScript", "PWA", "GitHub Actions"],
     "image": "car-doctor.jpg",
-    "imageAlt": "Three Car Doctor phone screens: a symptom chat, a worn brake pads diagnosis with checks, and a trouble code lookup",
+    "imageAlt": "Three Car Doctor phone screens: a symptom chat, a worn brake pads diagnosis in plain English, and maintenance reminders",
     "url": "https://github.com/Caylor-Made-Technologies/car-doctor",
     "linkLabel": "See the code",
     "featured": false
