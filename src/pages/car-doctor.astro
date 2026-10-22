@@ -11,9 +11,12 @@ const appUrl = 'https://caylor-made-technologies.github.io/car-doctor/';
 
 const features = [
   { icon: 'chat', title: 'Just tap or tell it', text: 'Tap what you notice (a noise, a smell, a warning light) and where it comes from, or type it in your own words. No car knowledge needed.' },
-  { icon: 'check', title: 'Answers in plain English', text: 'What’s going on, whether it’s safe to drive, and what to do next. Car words are underlined; tap one to see what it means.' },
-  { icon: 'gears', title: 'Asks smart questions', text: 'When two problems look alike, it asks one simple question anyone can answer, like whether the dash lights stay bright.' },
-  { icon: 'wrench', title: 'Knows your vehicle', text: 'Add your year, make and model to see the problems it’s known for. Answers mention it when your problem is a common one.' },
+  { icon: 'gears', title: 'Asks before it guesses', text: 'Say “it makes a weird noise” and it asks what it sounds like, where, and when, the way a mechanic would. When two problems look alike, it asks one simple question anyone can answer.' },
+  { icon: 'check', title: '“Can I drive it?” comes first', text: 'Every answer starts with whether it’s safe to drive, then what’s going on and what to do, in plain English. Tap any underlined car word to see what it means.' },
+  { icon: 'wrench', title: 'Specific answers', text: '59 problems, from a dead battery to CVT judder, lifter tick, torque converter shudder, death wobble, turbo, diesel exhaust fluid and hybrid warnings. Plus 113 trouble codes and a dash light guide.' },
+  { icon: 'building', title: 'Knows 670+ vehicles', text: 'Cars and trucks sold in the US since 2000, with 1,700+ commonly reported problems, checked against NHTSA recall and complaint data. Answers point it out when your problem is a common one.' },
+  { icon: 'pin', title: 'Don’t know your car? Use the VIN', text: 'Type the VIN from the windshield, door sticker or insurance card and it fills in the year, make, model and engine for you.' },
+  { icon: 'globe', title: 'Works with no signal', text: 'Install it once and it works anywhere: on a back road, in a parking garage, at the ranch. No wifi, no account, nothing to pay.' },
   { icon: 'phone', title: 'Help when you need it', text: 'One tap to Texas roadside help, a tow truck, or a mechanic near you for the bigger jobs.' },
   { icon: 'clock', title: 'Reminders and a repair log', text: 'Oil changes, tires and brakes go straight into your phone’s calendar, and your repair history stays on your phone.' },
 ];
@@ -26,12 +29,12 @@ const steps = [
 ---
 <Base
   title="Car Doctor"
-  description="Car Doctor is a free phone app by Caylor Made Technologies that explains car and truck problems in plain English. Works offline, and your data stays on your phone."
+  description="Car Doctor is a free phone app by Caylor Made Technologies: a mechanic in your pocket that explains car and truck problems in plain English. Works with no signal, and your data stays on your phone."
 >
   <PageHero
     eyebrow="Free app"
     title="Car Doctor"
-    lead="Figure out what’s wrong with your car or truck in plain English, without knowing anything about cars. Free, works offline, and private."
+    lead="A mechanic in your pocket. Figure out what’s wrong with your car or truck in plain English, even with no signal and no car know-how. Free and private."
   >
     <Image class="app-icon" src={appIcon} alt="" width={112} height={112} loading="eager" />
     <div class="btn-row hero-ctas">
@@ -46,7 +49,7 @@ const steps = [
     <div class="container">
       <h2 id="shots-title" class="visually-hidden">Screenshots</h2>
       <div class="shot reveal">
-        <Image src={shot} alt="Three Car Doctor phone screens: symptom tiles to tap, noise choices with listen buttons, and a diagnosis with a gauge dial and a known-problem note" widths={[480, 800, 1200, 1600]} sizes="(min-width: 72rem) 70rem, 94vw" format="webp" />
+        <Image src={shot} alt="Three Car Doctor phone screens: the app asking what a noise sounds like with listen buttons, a diagnosis that starts with Can I drive it?, and a VIN lookup that filled in a 2005 Chevrolet Silverado 2500HD" widths={[480, 800, 1200, 1600]} sizes="(min-width: 72rem) 70rem, 94vw" format="webp" />
       </div>
     </div>
   </section>
@@ -96,7 +99,7 @@ const steps = [
     <div class="container container--narrow stack">
       <p class="eyebrow">Privacy</p>
       <h2 id="privacy-title">Your data stays on your phone</h2>
-      <p>No account, no ads, no tracking. Your vehicle, repair log, reminders and answers are saved only on your phone, and you can delete them any time inside the app. The diagnosis runs on your phone too, so nothing you type is sent anywhere.</p>
+      <p>No account, no ads, no tracking. Your vehicle, repair log, reminders and answers are saved only on your phone, and you can delete them any time inside the app. The diagnosis runs on your phone too, so nothing you type is sent anywhere. The one exception: if you look up a VIN, it’s sent to the U.S. government’s free vehicle decoder (NHTSA) to fill in the model and engine. It isn’t saved.</p>
       <p class="muted">Car Doctor gives guidance only. It isn’t a professional inspection and can be wrong. If something feels unsafe, don’t drive it and have a qualified mechanic check it.</p>
     </div>
   </section>
