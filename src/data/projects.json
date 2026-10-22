@@ -30,7 +30,7 @@
     "title": "Car Doctor",
     "type": "Offline app + machine learning",
     "problem": "Figuring out what's wrong with a car or truck usually means guessing, searching forums, or paying for a diagnosis before you even know where to look.",
-    "built": "An installable phone app that diagnoses problems from plain-English symptoms and OBD-II trouble codes. Tap through what you notice and where, and get answers in plain English from a machine-learning model I trained myself (96% accurate in testing) that runs right on the phone, offline and free. It knows the common problems of nearly 200 vehicles, explains dashboard lights, finds a mechanic nearby, and adds maintenance reminders to the phone's calendar.",
+    "built": "An installable phone app that diagnoses problems from plain-English symptoms and OBD-II trouble codes. Tap through what you notice and where, and get answers in plain English from a machine-learning model I trained myself that runs right on the phone, offline and free. It knows the common problems of nearly 200 vehicles, explains dashboard lights, finds a mechanic nearby, and adds maintenance reminders to the phone's calendar.",
     "tech": ["Python", "scikit-learn", "JavaScript", "PWA", "GitHub Actions"],
     "image": "car-doctor.jpg",
     "imageAlt": "Three Car Doctor phone screens: tap-to-pick symptom tiles, a diagnosis with a gauge dial and a known-problem note, and a vehicle's known problems",
