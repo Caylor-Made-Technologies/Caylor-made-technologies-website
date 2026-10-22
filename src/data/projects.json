@@ -1,11 +1,55 @@
 [
   {
+    "slug": "car-doctor",
+    "title": "Car Doctor",
+    "type": "Offline app + machine learning",
+    "problem": "Figuring out what's wrong with a car or truck usually means guessing, searching forums, or paying for a diagnosis before you even know where to look.",
+    "built": "An installable phone app, like a mechanic in your pocket, that diagnoses problems from plain-English symptoms and OBD-II trouble codes. Tap through what you notice and where; it asks a follow-up when it needs more, then answers in plain English, starting with whether it's safe to drive. The machine-learning model is one I trained myself, and it runs right on the phone, offline and free. It knows 670+ vehicles sold since 2000 (checked against NHTSA recall data), fills in your vehicle from its VIN, explains dashboard lights, finds a mechanic nearby, and adds maintenance reminders to the phone's calendar.",
+    "tech": [
+      "Python",
+      "scikit-learn",
+      "JavaScript",
+      "PWA",
+      "GitHub Actions"
+    ],
+    "image": "car-doctor.jpg",
+    "imageAlt": "Three Car Doctor phone screens: the app asking what a noise sounds like, a diagnosis that starts with Can I drive it?, and a VIN lookup filling in a 2005 Chevrolet Silverado 2500HD",
+    "url": "/car-doctor/",
+    "linkLabel": "See Car Doctor",
+    "featured": true
+  },
+  {
+    "slug": "money-leak-finder",
+    "title": "Money Leak Finder",
+    "type": "Budgeting app",
+    "problem": "Most people know money is slipping away every month but not where: forgotten subscriptions, fees, and small buys that add up.",
+    "built": "An installable phone app that finds the leaks. Add pay and spending by typing it in or uploading a bank CSV (reading screenshots of pay stubs and receipts is coming soon). It sorts everything into categories, flags subscriptions, double charges, small purchases that add up, spending jumps and fees, and shows each one as “about $Y a year.” Then it plans your goals (how much per week, and how much sooner if you plug the leaks) and shows what investing could grow to. Your data stays on your phone; card and account numbers are hidden automatically.",
+    "tech": [
+      "React",
+      "Tailwind",
+      "IndexedDB",
+      "Cloudflare Workers",
+      "PWA"
+    ],
+    "image": "money-leak-finder.jpg",
+    "imageAlt": "Three Money Leak Finder phone screens: a monthly dashboard with money left over and 7 leaks found, the leak finder showing $5,295 a year slipping away, and a truck savings goal reached 2.2 months sooner by plugging leaks",
+    "url": "/money-leak-finder/",
+    "linkLabel": "See Money Leak Finder",
+    "featured": true
+  },
+  {
     "slug": "astro-jumpers",
     "title": "Astro Jumpers",
     "type": "Website + online booking",
     "problem": "A local bounce house rental business needed customers to see what's open and book without phone tag.",
     "built": "A fast, mobile-first website with live availability, online booking, and a simple admin page the owner runs from a phone.",
-    "tech": ["HTML", "CSS", "JavaScript", "Supabase", "Serverless email"],
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Supabase",
+      "Serverless email"
+    ],
     "image": "astro-jumpers.jpg",
     "imageAlt": "Astro Jumpers home page with an astronaut bounce house logo and a Book Now button",
     "url": "https://caylor-made-technologies.github.io/astro-jumpers-website/",
@@ -18,24 +62,17 @@
     "type": "Custom web app",
     "problem": "Dust and debris checks in industrial grain mills were tracked on paper, so missed areas were easy to overlook.",
     "built": "A mobile-first app that shows which areas are due or overdue, logs each inspection with a photo, and saves to the device so it keeps working where the signal is bad.",
-    "tech": ["HTML", "CSS", "JavaScript", "IndexedDB", "On-device storage"],
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "IndexedDB",
+      "On-device storage"
+    ],
     "image": "mill-housekeeping-log.jpg",
     "imageAlt": "Mill Housekeeping Log app showing a list of inspection areas marked Due",
     "url": "https://caylor-made-technologies.github.io/grain-mill-dust-log/",
     "linkLabel": "Try the demo",
-    "featured": true
-  },
-  {
-    "slug": "car-doctor",
-    "title": "Car Doctor",
-    "type": "Offline app + machine learning",
-    "problem": "Figuring out what's wrong with a car or truck usually means guessing, searching forums, or paying for a diagnosis before you even know where to look.",
-    "built": "An installable phone app, like a mechanic in your pocket, that diagnoses problems from plain-English symptoms and OBD-II trouble codes. Tap through what you notice and where; it asks a follow-up when it needs more, then answers in plain English, starting with whether it's safe to drive. The machine-learning model is one I trained myself, and it runs right on the phone, offline and free. It knows 670+ vehicles sold since 2000 (checked against NHTSA recall data), fills in your vehicle from its VIN, explains dashboard lights, finds a mechanic nearby, and adds maintenance reminders to the phone's calendar.",
-    "tech": ["Python", "scikit-learn", "JavaScript", "PWA", "GitHub Actions"],
-    "image": "car-doctor.jpg",
-    "imageAlt": "Three Car Doctor phone screens: the app asking what a noise sounds like, a diagnosis that starts with Can I drive it?, and a VIN lookup filling in a 2005 Chevrolet Silverado 2500HD",
-    "url": "/car-doctor/",
-    "linkLabel": "See Car Doctor",
-    "featured": true
+    "featured": false
   }
 ]
