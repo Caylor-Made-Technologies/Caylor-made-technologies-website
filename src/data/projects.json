@@ -38,6 +38,26 @@
     "featured": true
   },
   {
+    "slug": "critical-facilities-sim",
+    "title": "Critical Facilities Simulator",
+    "type": "Training simulator + web app",
+    "problem": "New data center techs learn power and cooling on live, high-stakes equipment, where a wrong breaker or a skipped lockout step can drop servers or hurt someone.",
+    "built": "A free, offline simulator of a generic data center, from the utility feed to the server rack and the cooling towers. Break things on purpose and watch the backups catch them, run scored maintenance procedures and emergency drills on a live plant model, and practice safety: approach boundaries around live gear, lockout steps in the right order, hazard hunts, emergency cards, and a printable pre-task brief. 16 sections, 15 scored procedures, 44 quiz questions, and 154 automated tests. Nothing is collected or sent.",
+    "tech": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "SVG",
+      "Vitest",
+      "PWA"
+    ],
+    "image": "critical-facilities-sim.jpg",
+    "imageAlt": "Critical Facilities Simulator on a laptop showing the live plant with all systems normal, and two phone screens: walking up to live 480 volt gear with approach boundaries, and a battery room hazard hunt",
+    "url": "/critical-facilities-sim/",
+    "linkLabel": "See the simulator",
+    "featured": true
+  },
+  {
     "slug": "astro-jumpers",
     "title": "Astro Jumpers",
     "type": "Website + online booking",
@@ -54,7 +74,7 @@
     "imageAlt": "Astro Jumpers home page with an astronaut bounce house logo and a Book Now button",
     "url": "https://caylor-made-technologies.github.io/astro-jumpers-website/",
     "linkLabel": "Visit site",
-    "featured": true
+    "featured": false
   },
   {
     "slug": "mill-housekeeping-log",

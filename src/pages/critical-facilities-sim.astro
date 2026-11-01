@@ -1,0 +1,178 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import shot from '../assets/projects/critical-facilities-sim.jpg';
+
+const appUrl = 'https://caylor-made-technologies.github.io/critical-facilities-sim/';
+
+const stats = [
+  { n: '16', label: 'sections' },
+  { n: '15', label: 'scored procedures & drills' },
+  { n: '44', label: 'quiz questions' },
+  { n: '154', label: 'automated tests' },
+];
+
+const features = [
+  { icon: 'gears', title: 'A plant you can break', text: 'Utility feeds, generators, transfer switches, UPS systems, batteries and 36 racks, plus chillers, towers, pumps and air handlers. Fail anything and watch the backups catch it, or not.' },
+  { icon: 'target', title: 'Scored procedures', text: 'Seven maintenance procedures and eight emergency drills run on the live plant model. Wrong calls are played out on a copy of the plant so you see what would really have happened.' },
+  { icon: 'shield', title: 'Safety Center', text: 'Ten golden rules, approach boundaries around live gear, lockout steps in the right order, hazard hunts, emergency cards, and a pre-task brief you can print.' },
+  { icon: 'lock', title: 'Interlocks that bite', text: 'Trapped-key interlocks and a paralleling check refuse unsafe switching, just like the real thing. It teaches why the rules exist.' },
+  { icon: 'trend', title: 'Seven designs, side by side', text: 'N, N+1, N+2, 2N, 2N+1, distributed and block redundant, all built and broken with the same load. A live power-efficiency breakdown shows where the energy goes.' },
+  { icon: 'chat', title: 'Plain-English lessons', text: '14 step-by-step walkthroughs, each with an “explain it simpler” button, six case studies, a glossary and a quiz that explains wrong answers.' },
+  { icon: 'arrow', title: 'Smooth and quick', text: 'Animated power and water flow, sliding tabs, and a quick search (Ctrl + K) that jumps to any lesson, drill, piece of equipment or term.' },
+  { icon: 'globe', title: 'Works offline', text: 'Opens with no signal after the first visit and can be added to a phone’s home screen. Built for phones first, and it works great on a laptop.' },
+  { icon: 'check', title: 'Tested and accessible', text: '154 automated tests on the engine and content, and an accessibility scan with zero issues on every section, on phone and laptop, light and dark.' },
+];
+
+const steps = [
+  { title: 'Take the tour', text: 'Tap “Start the guided tour” on the home screen for a 4-minute walk from the utility feed to the rack.' },
+  { title: 'Break something', text: 'Open the Simulator, switch to Failure mode, and trip a utility feed or a chiller. Watch what the plant does next.' },
+  { title: 'Practice for real', text: 'Run a scored procedure or drill, then try the Safety Center drills. Your progress stays on your own device.' },
+];
+---
+<Base
+  title="Critical Facilities Simulator"
+  description="A free, offline data center power and cooling simulator by Caylor Made Technologies. Break the plant on purpose, run scored procedures and drills, and practice safety."
+>
+  <PageHero
+    eyebrow="Free training simulator"
+    title="Critical Facilities Simulator"
+    lead="Learn the plant that never sleeps. A free, offline simulator of a data center’s power and cooling: break it on purpose, watch the backups catch it, and practice the procedures and safety rules that keep people safe and servers running."
+  >
+    <div class="btn-row hero-ctas">
+      <a class="btn btn--primary" href={appUrl} target="_blank" rel="noopener noreferrer">
+        Open the simulator <Icon name="external" /><span class="visually-hidden"> (opens in a new tab)</span>
+      </a>
+      <a class="btn btn--ghost" href="#start">How to start</a>
+    </div>
+    <ul class="stats" role="list">
+      {stats.map((s) => <li><strong>{s.n}</strong> {s.label}</li>)}
+    </ul>
+  </PageHero>
+
+  <section class="section" aria-labelledby="shots-title">
+    <div class="container">
+      <h2 id="shots-title" class="visually-hidden">Screenshots</h2>
+      <div class="shot reveal">
+        <Image src={shot} alt="The simulator on a laptop showing the live plant with all systems normal and live readings, and two phone screens: walking up to live 480 volt gear with the approach boundaries drawn, and a battery room hazard hunt with hazards flagged in red" widths={[480, 800, 1200, 1600]} sizes="(min-width: 72rem) 70rem, 94vw" format="webp" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="features-title">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">What it does</p>
+        <h2 id="features-title">From the utility pole to the chip</h2>
+      </div>
+      <ul class="grid features" role="list">
+        {features.map((f) => (
+          <li class="card reveal">
+            <span class="feature-icon"><Icon name={f.icon} /></span>
+            <h3>{f.title}</h3>
+            <p>{f.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="start" aria-labelledby="start-title">
+    <div class="container container--narrow">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">Get started</p>
+        <h2 id="start-title">Three ways in</h2>
+        <p class="muted">No sign-up, no download. It runs in your browser.</p>
+      </div>
+      <ol class="steps" role="list">
+        {steps.map((s, i) => (
+          <li class="card reveal">
+            <span class="step-num" aria-hidden="true">{i + 1}</span>
+            <div><h3>{s.title}</h3><p>{s.text}</p></div>
+          </li>
+        ))}
+      </ol>
+      <div class="btn-row center">
+        <a class="btn btn--primary" href={appUrl} target="_blank" rel="noopener noreferrer">
+          Open the simulator <Icon name="external" /><span class="visually-hidden"> (opens in a new tab)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="privacy-title">
+    <div class="container container--narrow stack">
+      <p class="eyebrow">Privacy &amp; fine print</p>
+      <h2 id="privacy-title">Collects nothing</h2>
+      <p>No account, no cookies, no analytics, no ads. Your settings and practice scores are saved only in your own browser, and you can clear them any time from the app’s About page.</p>
+      <p class="muted">The Critical Facilities Simulator is an educational simulation of generic data center equipment. Every name, tag and layout is invented. It is not a site procedure, training certification, or engineering tool: always follow your facility’s approved procedures, lockout program and safety rules.</p>
+    </div>
+  </section>
+
+  <CtaBand title="Need a training tool or custom app?" text="I build software that solves real problems on the job, like this one. Book a free 15-minute call and tell me what you need." />
+</Base>
+
+<style>
+  :global(.page-hero) .app-icon {
+    display: block;
+    margin: 1.5rem auto 0;
+    border-radius: 26px;
+    box-shadow: 0 0 0 1px var(--border-strong), 0 0 40px rgba(61, 139, 255, 0.35);
+  }
+  .hero-ctas { justify-content: center; margin-top: 1.5rem; }
+  .hero-ctas :global(svg), .center :global(svg) { width: 18px; height: 18px; }
+  .shot img, .shot :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: calc(var(--radius) + 4px);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--glow-md);
+  }
+  .features { --min: 17rem; list-style: none; padding: 0; }
+  .feature-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 0.75rem;
+    border-radius: 12px;
+    color: var(--blue-glow);
+    background: rgba(30, 111, 255, 0.12);
+    box-shadow: inset 0 0 0 1px var(--border-strong);
+  }
+  .feature-icon :global(svg) { width: 22px; height: 22px; }
+  .steps { display: grid; gap: 1rem; list-style: none; padding: 0; margin-bottom: 2rem; }
+  .steps li { display: flex; gap: 1rem; align-items: flex-start; }
+  .step-num {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-weight: 700;
+    color: #fff;
+    background: var(--blue-button);
+    box-shadow: 0 0 18px rgba(61, 139, 255, 0.4);
+  }
+  .center { justify-content: center; }
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+  }
+  .stats li {
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    font-size: 0.9rem;
+  }
+  .stats strong { color: var(--text-heading, #fff); }
+</style>
