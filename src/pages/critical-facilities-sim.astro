@@ -5,14 +5,15 @@ import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
 import shot from '../assets/projects/critical-facilities-sim.jpg';
+import appIcon from '../assets/projects/critical-facilities-sim-icon.png';
 
 const appUrl = 'https://caylor-made-technologies.github.io/critical-facilities-sim/';
 
 const stats = [
-  { n: '16', label: 'sections' },
+  { n: '18', label: 'sections' },
   { n: '15', label: 'scored procedures & drills' },
-  { n: '44', label: 'quiz questions' },
-  { n: '154', label: 'automated tests' },
+  { n: '7', label: 'field calculators' },
+  { n: '166', label: 'automated tests' },
 ];
 
 const features = [
@@ -22,9 +23,12 @@ const features = [
   { icon: 'lock', title: 'Interlocks that bite', text: 'Trapped-key interlocks and a paralleling check refuse unsafe switching, just like the real thing. It teaches why the rules exist.' },
   { icon: 'trend', title: 'Seven designs, side by side', text: 'N, N+1, N+2, 2N, 2N+1, distributed and block redundant, all built and broken with the same load. A live power-efficiency breakdown shows where the energy goes.' },
   { icon: 'chat', title: 'Plain-English lessons', text: '14 step-by-step walkthroughs, each with an “explain it simpler” button, six case studies, a glossary and a quiz that explains wrong answers.' },
+  { icon: 'wrench', title: 'Field tools', text: 'Calculators for amps, UPS runtime by battery age, generator fuel, cooling tons, water flow and airflow, PUE, and battery life versus room temperature.' },
+  { icon: 'building', title: 'Career track', text: 'Interview practice cards, a technician-to-chief-engineer path, and a shift handoff report that fills itself in from the live plant.' },
+  { icon: 'clock', title: 'Daily challenge & badges', text: 'Three questions a day with a streak counter, 15 badges to earn, a timed exam, and flashcards that bring back the terms you miss.' },
   { icon: 'arrow', title: 'Smooth and quick', text: 'Animated power and water flow, sliding tabs, and a quick search (Ctrl + K) that jumps to any lesson, drill, piece of equipment or term.' },
-  { icon: 'globe', title: 'Works offline', text: 'Opens with no signal after the first visit and can be added to a phone’s home screen. Built for phones first, and it works great on a laptop.' },
-  { icon: 'check', title: 'Tested and accessible', text: '154 automated tests on the engine and content, and an accessibility scan with zero issues on every section, on phone and laptop, light and dark.' },
+  { icon: 'globe', title: 'Install it, use it offline', text: 'Tap “Install the app” for its own home-screen icon. It opens with no signal and keeps your progress on your phone, with a backup file you can move to a new device.' },
+  { icon: 'check', title: 'Tested and accessible', text: '166 automated tests on the engine and content, and an accessibility scan with zero issues on every section, on phone and laptop, light and dark.' },
 ];
 
 const steps = [
@@ -42,6 +46,7 @@ const steps = [
     title="Critical Facilities Simulator"
     lead="Learn the plant that never sleeps. A free, offline simulator of a data center’s power and cooling: break it on purpose, watch the backups catch it, and practice the procedures and safety rules that keep people safe and servers running."
   >
+    <Image class="app-icon" src={appIcon} alt="" width={112} height={112} loading="eager" />
     <div class="btn-row hero-ctas">
       <a class="btn btn--primary" href={appUrl} target="_blank" rel="noopener noreferrer">
         Open the simulator <Icon name="external" /><span class="visually-hidden"> (opens in a new tab)</span>
