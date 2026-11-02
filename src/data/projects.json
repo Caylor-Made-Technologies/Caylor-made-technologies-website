@@ -42,7 +42,7 @@
     "title": "Critical Facilities Simulator",
     "type": "Training simulator + web app",
     "problem": "New data center techs learn power and cooling on live, high-stakes equipment, where a wrong breaker or a skipped lockout step can drop servers or hurt someone.",
-    "built": "A free, offline simulator of a generic data center, from the utility feed to the server rack and the cooling towers. Break things on purpose and watch the backups catch them, run scored maintenance procedures and emergency drills on a live plant model, and practice safety: approach boundaries, lockout order, hazard hunts and emergency cards. It also has 219 field tips and memory aids, field calculators, interview practice, a shift handoff that reads the live plant, a daily challenge with streaks and badges, and its own home-screen app icon. 19 sections and 171 automated tests. Nothing is collected or sent.",
+    "built": "A free, offline simulator of a generic data center, from the utility feed to the server rack and the cooling towers. Break things on purpose and watch the backups catch them, run scored maintenance procedures and emergency drills on a live plant model, and practice safety: approach boundaries, lockout order, hazard hunts and emergency cards. It also has 219 field tips and memory aids, field calculators, a career ladder with 13 specialist branches, interview practice, a shift handoff that reads the live plant, a daily challenge with streaks and badges, and its own home-screen app icon. 19 sections and 174 automated tests. Nothing is collected or sent.",
     "tech": [
       "React",
       "TypeScript",
