@@ -10,15 +10,18 @@ import appIcon from '../assets/projects/critical-facilities-sim-icon.png';
 const appUrl = 'https://caylor-made-technologies.github.io/critical-facilities-sim/';
 
 const stats = [
-  { n: '19', label: 'sections' },
-  { n: '15', label: 'scored procedures & drills' },
-  { n: '219', label: 'tips & tricks' },
-  { n: '174', label: 'automated tests' },
+  { n: '20', label: 'sections' },
+  { n: '35', label: 'scored procedures & drills' },
+  { n: '21', label: 'equipment deep dives' },
+  { n: '760+', label: 'automated tests' },
 ];
 
 const features = [
   { icon: 'gears', title: 'A plant you can break', text: 'Utility feeds, generators, transfer switches, UPS systems, batteries and 36 racks, plus chillers, towers, pumps and air handlers. Fail anything and watch the backups catch it, or not.' },
-  { icon: 'target', title: 'Scored procedures', text: 'Seven maintenance procedures and eight emergency drills run on the live plant model. Wrong calls are played out on a copy of the plant so you see what would really have happened.' },
+  { icon: 'target', title: 'Scored procedures', text: '20 maintenance procedures, each with a MOP sheet (risk, prerequisites, stop-work points, rollback), and 15 emergency drills, including combined failures like a utility loss when the generators won’t start. Wrong calls are played out on a copy of the plant, and signing off before the plant shows it costs points.' },
+  { icon: 'pin', title: 'Shift mode and live rounds', text: 'Work an 8-hour shift in about 15 minutes with random events and a scored hand-off. Or walk a round on the live plant: read the gauges, write the values down, and flag what’s out of range.' },
+  { icon: 'camera', title: 'Equipment deep dives', text: 'Every one of 21 equipment guides goes deeper: normal readings, how it fails, field tips, a link to practice it on the plant, and a short quiz. 3D cutaways show what’s inside a UPS, chiller, transformer, generator, switchboard and more.' },
+  { icon: 'split', title: 'Real-world events', text: 'Utility sags, swells and lost phases that the UPS, transfer switch, generators and chillers each answer differently, and rack-by-rack hot spots from missing blanking panels or failed air handlers.' },
   { icon: 'shield', title: 'Safety Center', text: 'Ten golden rules, approach boundaries around live gear, lockout steps in the right order, hazard hunts, emergency cards, and a pre-task brief you can print.' },
   { icon: 'lock', title: 'Interlocks that bite', text: 'Trapped-key interlocks and a paralleling check refuse unsafe switching, just like the real thing. It teaches why the rules exist.' },
   { icon: 'trend', title: 'Seven designs, side by side', text: 'N, N+1, N+2, 2N, 2N+1, distributed and block redundant, all built and broken with the same load. A live power-efficiency breakdown shows where the energy goes.' },
@@ -26,10 +29,10 @@ const features = [
   { icon: 'drop', title: '200+ tips & tricks', text: 'Memory aids like CCME for the refrigeration cycle and BOY for 480 V wire colors, quick math, and safe in-a-pinch moves. Search them, roll a random one, and star your favorites.' },
   { icon: 'wrench', title: 'Field tools', text: 'Calculators for amps, UPS runtime by battery age, generator fuel, cooling tons, water flow and airflow, PUE, and battery life versus room temperature.' },
   { icon: 'building', title: 'Career ladder', text: 'Climb from technician to operations director: what to do at each step, how to move up, and which certifications to get. Branch off into electrical SME, controls, technical writing, commissioning and more. Plus interview practice and a live shift handoff.' },
-  { icon: 'clock', title: 'Daily challenge & badges', text: 'Three questions a day with a streak counter, 15 badges to earn, a timed exam, and flashcards that bring back the terms you miss.' },
+  { icon: 'clock', title: 'Daily challenge & badges', text: 'Three questions a day with a streak counter, 21 badges to earn, a timed exam, and flashcards that bring back the terms you miss.' },
   { icon: 'arrow', title: 'Smooth and quick', text: 'Animated power and water flow, sliding tabs, and a quick search (Ctrl + K) that jumps to any lesson, drill, piece of equipment or term.' },
   { icon: 'globe', title: 'Install it, use it offline', text: 'Tap “Install the app” for its own home-screen icon. It opens with no signal and keeps your progress on your phone, with a backup file you can move to a new device.' },
-  { icon: 'check', title: 'Tested and accessible', text: '174 automated tests on the engine and content, and an accessibility scan with zero issues on every section, on phone and laptop, light and dark.' },
+  { icon: 'check', title: 'Tested and accessible', text: 'More than 760 automated tests on the engine and content, every procedure and drill played to 100 in a real browser, and an accessibility scan with zero serious issues on phone and laptop, light and dark.' },
 ];
 
 const steps = [
