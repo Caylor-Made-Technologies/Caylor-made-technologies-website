@@ -58,6 +58,27 @@
     "featured": true
   },
   {
+    "slug": "controls-academy",
+    "title": "Controls Academy",
+    "type": "Training app + PLC simulator",
+    "problem": "New maintenance and controls techs are expected to read prints, find faults and go online with a PLC, but most training assumes you already know the basics, costs a lot, or needs real equipment.",
+    "built": "A free, offline app that teaches PLCs and industrial controls from zero. 60 lessons in four levels, a real scan-cycle PLC you can program in ladder logic on a phone, the same logic in ten brands' addressing styles, and eight machines in 3D driven by your program. Fault Hunt hides 37 faults to find with a meter the safe way, scored on speed and safety. A reference section adds field devices in 3D, troubleshooting flowcharts, cheat sheets and brand guides. Every page scores 97–100 in Lighthouse on a phone, and 650+ automated tests check it on every change. Nothing is collected or sent.",
+    "tech": [
+      "React",
+      "TypeScript",
+      "Three.js",
+      "Vite",
+      "Vitest",
+      "Playwright",
+      "PWA"
+    ],
+    "image": "controls-academy.jpg",
+    "imageAlt": "Controls Academy on a laptop showing the PLC workbench with a 3D control panel and motor, and two phone screens: a fault hunt with a multimeter, and an emergency stop button in 3D",
+    "url": "/controls-academy/",
+    "linkLabel": "See Controls Academy",
+    "featured": false
+  },
+  {
     "slug": "astro-jumpers",
     "title": "Astro Jumpers",
     "type": "Website + online booking",

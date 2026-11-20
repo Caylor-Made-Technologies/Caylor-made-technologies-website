@@ -1,0 +1,183 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import shot from '../assets/projects/controls-academy.jpg';
+import appIcon from '../assets/projects/controls-academy-icon.png';
+
+const appUrl = 'https://caylor-made-technologies.github.io/controls-academy/';
+
+const stats = [
+  { n: '60', label: 'lessons, zero to expert' },
+  { n: '8', label: 'machines in 3D' },
+  { n: '37', label: 'faults to hunt' },
+  { n: '650+', label: 'automated tests' },
+];
+
+const features = [
+  { icon: 'chat', title: 'Starts from zero', text: '60 lessons in four levels, from “what is a volt” through safety, reading prints, hardwired motor control and ladder logic to going online, networks, drives, PID and commissioning. Every term is explained the first time, and every lesson ends with a short check.' },
+  { icon: 'gears', title: 'A real PLC inside', text: 'A scan-cycle engine you can watch one step at a time: inputs, rungs, outputs. Timers, counters, math, scaling, subroutines and PID behave the way the real instructions do, and every one is tested.' },
+  { icon: 'wrench', title: 'Write and fix ladder logic', text: 'A touch-first ladder editor with branches, undo, a Verify button that catches duplicate coils and missing seal-ins, cross-reference, forces, and share links.' },
+  { icon: 'split', title: 'Ten brand dialects', text: 'The same program in Allen-Bradley, Siemens, Modicon, Mitsubishi, AutomationDirect, Omron and IEC addressing, so the panel you meet on day one looks familiar. Brand names describe conventions only.' },
+  { icon: 'factory', title: 'Eight machines in 3D', text: 'A motor starter, a forward/reverse screw conveyor, a bag conveyor with photo-eyes, a tank on PID, a lift station, a data center transfer switch and cooling, a flour batch mixer and a fan on a drive, all driven live by your logic.' },
+  { icon: 'target', title: 'Fault Hunt', text: '37 hidden faults. Read the operator’s complaint, check the I/O lights and the logic, then prove it with a meter the safe way (live-dead-live). Scored on speed and on safety.' },
+  { icon: 'trend', title: 'Wiring trainer', text: 'Wire a start/stop circuit terminal by terminal. The checker powers it and tells you the first thing that goes wrong, like a missing seal-in.' },
+  { icon: 'camera', title: 'Field devices and hardware', text: '19 field devices in 3D, from prox sensors to safety relays, each with how it’s wired, how it fails and how to test it safely. Plus 87 PLCs, drives and HMIs from 25 brands as simplified look-alikes.' },
+  { icon: 'building', title: 'A reference for the floor', text: 'Brand field guides, brands side by side, troubleshooting flowcharts, printable cheat sheets (wire colors, contact numbers, 4–20 mA math) and a day-one checklist for a new plant.' },
+  { icon: 'shield', title: 'Safety in every part', text: 'Lockout, NFPA 70E, live-dead-live and “never bypass a safety circuit” are part of the lessons, the hunts and the scoring, not an afterthought.' },
+  { icon: 'globe', title: 'Install it, use it offline', text: 'Add it to your home screen and it works with no signal. Progress stays on your phone, with a backup file you can move to a new device.' },
+  { icon: 'check', title: 'Fast, tested and accessible', text: 'Every page scores 97–100 for performance and 100 for accessibility on a phone in Lighthouse, works down to 320 px wide, and is checked by 650+ automated tests on every change.' },
+];
+
+const steps = [
+  { title: 'Start from zero', text: 'Open Learn and begin with Track 0. Each lesson takes a few minutes and ends with a quick check.' },
+  { title: 'Run the motor', text: 'Open the Simulator, press Start and watch the rungs light up, the contactor pull in and the motor spin. Then change the logic.' },
+  { title: 'Find a fault', text: 'Open Troubleshoot and take a hunt. Use the meter the safe way and see how fast you can find it.' },
+];
+---
+<Base
+  title="Controls Academy"
+  description="A free, offline app that teaches PLCs and industrial controls from zero, by Caylor Made Technologies. Lessons, a real PLC simulator, eight machines in 3D and fault hunts."
+>
+  <PageHero
+    eyebrow="Free training app"
+    title="Controls Academy"
+    lead="Learn PLCs and industrial controls from zero. Lessons that start with “what is a volt,” a real PLC you can program on your phone, eight machines in 3D, and fault hunts that score you on safety. Free, offline, no sign-up."
+  >
+    <Image class="app-icon" src={appIcon} alt="" width={112} height={112} loading="eager" />
+    <div class="btn-row hero-ctas">
+      <a class="btn btn--primary" href={appUrl} target="_blank" rel="noopener noreferrer">
+        Open Controls Academy <Icon name="external" /><span class="visually-hidden"> (opens in a new tab)</span>
+      </a>
+      <a class="btn btn--ghost" href="#start">How to start</a>
+    </div>
+    <ul class="stats" role="list">
+      {stats.map((s) => <li><strong>{s.n}</strong> {s.label}</li>)}
+    </ul>
+  </PageHero>
+
+  <section class="section" aria-labelledby="shots-title">
+    <div class="container">
+      <h2 id="shots-title" class="visually-hidden">Screenshots</h2>
+      <div class="shot reveal">
+        <Image src={shot} alt="Controls Academy on a laptop showing the PLC workbench with a 3D control panel and motor, and two phone screens: a fault hunt work order with a multimeter, and an emergency stop button in 3D on the field devices page" widths={[480, 800, 1200, 1600]} sizes="(min-width: 72rem) 70rem, 94vw" format="webp" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="features-title">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">What it does</p>
+        <h2 id="features-title">From “what is a volt” to the panel</h2>
+      </div>
+      <ul class="grid features" role="list">
+        {features.map((f) => (
+          <li class="card reveal">
+            <span class="feature-icon"><Icon name={f.icon} /></span>
+            <h3>{f.title}</h3>
+            <p>{f.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="start" aria-labelledby="start-title">
+    <div class="container container--narrow">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">Get started</p>
+        <h2 id="start-title">Three ways in</h2>
+        <p class="muted">No sign-up, no download. It runs in your browser.</p>
+      </div>
+      <ol class="steps" role="list">
+        {steps.map((s, i) => (
+          <li class="card reveal">
+            <span class="step-num" aria-hidden="true">{i + 1}</span>
+            <div><h3>{s.title}</h3><p>{s.text}</p></div>
+          </li>
+        ))}
+      </ol>
+      <div class="btn-row center">
+        <a class="btn btn--primary" href={appUrl} target="_blank" rel="noopener noreferrer">
+          Open Controls Academy <Icon name="external" /><span class="visually-hidden"> (opens in a new tab)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="privacy-title">
+    <div class="container container--narrow stack">
+      <p class="eyebrow">Privacy &amp; fine print</p>
+      <h2 id="privacy-title">Collects nothing</h2>
+      <p>No account, no cookies, no analytics, no ads. Your progress is saved only on your own device, and you can export it or erase it any time from the app’s Profile page.</p>
+      <p class="muted">Controls Academy is training material, not a site procedure. Certificates and scores are practice records, not a qualification or license. Always follow your employer’s procedures, lockout program and the equipment manufacturer’s documentation. Not affiliated with or endorsed by any PLC manufacturer; brand names are used only to describe conventions, and all artwork is original.</p>
+    </div>
+  </section>
+
+  <CtaBand title="Need a training tool or custom app?" text="I build software that solves real problems on the job, like this one. Book a free 15-minute call and tell me what you need." />
+</Base>
+
+<style>
+  :global(.page-hero) .app-icon {
+    display: block;
+    margin: 1.5rem auto 0;
+    border-radius: 26px;
+    box-shadow: 0 0 0 1px var(--border-strong), 0 0 40px rgba(61, 139, 255, 0.35);
+  }
+  .hero-ctas { justify-content: center; margin-top: 1.5rem; }
+  .hero-ctas :global(svg), .center :global(svg) { width: 18px; height: 18px; }
+  .shot img, .shot :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: calc(var(--radius) + 4px);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--glow-md);
+  }
+  .features { --min: 17rem; list-style: none; padding: 0; }
+  .feature-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 0.75rem;
+    border-radius: 12px;
+    color: var(--blue-glow);
+    background: rgba(30, 111, 255, 0.12);
+    box-shadow: inset 0 0 0 1px var(--border-strong);
+  }
+  .feature-icon :global(svg) { width: 22px; height: 22px; }
+  .steps { display: grid; gap: 1rem; list-style: none; padding: 0; margin-bottom: 2rem; }
+  .steps li { display: flex; gap: 1rem; align-items: flex-start; }
+  .step-num {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-weight: 700;
+    color: #fff;
+    background: var(--blue-button);
+    box-shadow: 0 0 18px rgba(61, 139, 255, 0.4);
+  }
+  .center { justify-content: center; }
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+  }
+  .stats li {
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    font-size: 0.9rem;
+  }
+  .stats strong { color: var(--text-heading, #fff); }
+</style>
