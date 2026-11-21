@@ -64,7 +64,7 @@
     "title": "Money Leak Finder",
     "type": "Budgeting app",
     "problem": "Most people know money is slipping away every month but not where: forgotten subscriptions, fees, and small buys that add up.",
-    "built": "An installable phone app that finds the leaks. Add pay and spending by typing it in or uploading a bank CSV (reading screenshots of pay stubs and receipts is coming soon). It sorts everything into categories, flags subscriptions, double charges, small purchases that add up, spending jumps and fees, and shows each one as “about $Y a year.” Then it plans your goals (how much per week, and how much sooner if you plug the leaks) and shows what investing could grow to. Your data stays on your phone; card and account numbers are hidden automatically.",
+    "built": "An installable phone app that finds the leaks. Add pay and spending by typing it in, uploading a bank CSV, or snapping a screenshot of a pay stub, bank app list or receipt, read right on the phone with nothing sent. It sorts everything into categories, flags subscriptions, double charges, small purchases that add up, spending jumps and fees, and shows each one as “about $Y a year.” Then it plans your goals (how much per week, and how much sooner if you plug the leaks) and shows what investing could grow to. Your data stays on your phone; card and account numbers are hidden automatically.",
     "tech": [
       "React",
       "Tailwind",
