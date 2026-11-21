@@ -1,5 +1,46 @@
 [
   {
+    "slug": "controls-academy",
+    "title": "Controls Academy",
+    "type": "Training app + PLC simulator",
+    "problem": "New maintenance and controls techs are expected to read prints, find faults and go online with a PLC, but most training assumes you already know the basics, costs a lot, or needs real equipment.",
+    "built": "A free, offline app that teaches PLCs and industrial controls from zero. 60 lessons in four levels, a real scan-cycle PLC you can program in ladder logic on a phone, the same logic in ten brands' addressing styles, and eight machines in 3D driven by your program. Fault Hunt hides 37 faults to find with a meter the safe way, scored on speed and safety. A reference section adds field devices in 3D, troubleshooting flowcharts, cheat sheets and brand guides. Every page scores 97–100 in Lighthouse on a phone, and 650+ automated tests check it on every change. Nothing is collected or sent.",
+    "tech": [
+      "React",
+      "TypeScript",
+      "Three.js",
+      "Vite",
+      "Vitest",
+      "Playwright",
+      "PWA"
+    ],
+    "image": "controls-academy.jpg",
+    "imageAlt": "Controls Academy on a laptop showing the PLC workbench with a 3D control panel and motor, and two phone screens: a fault hunt with a multimeter, and an emergency stop button in 3D",
+    "url": "/controls-academy/",
+    "linkLabel": "See Controls Academy",
+    "featured": true
+  },
+  {
+    "slug": "critical-facilities-sim",
+    "title": "Critical Facilities Simulator",
+    "type": "Training simulator + web app",
+    "problem": "New data center techs learn power and cooling on live, high-stakes equipment, where a wrong breaker or a skipped lockout step can drop servers or hurt someone.",
+    "built": "A free, offline simulator of a generic data center, from the utility feed to the server rack and the cooling towers. Break things on purpose and watch the backups catch them, run scored maintenance procedures and emergency drills on a live plant model, and practice safety: approach boundaries, lockout order, hazard hunts and emergency cards. Version 1.0 adds deep dives on 21 equipment guides, 20 MOPs and 15 drills, shift mode, live rounds with analog gauges, utility power quality events and rack-by-rack hot spots. It also has 220 field tips, field calculators, a career ladder with 13 specialist branches, interview practice, a daily challenge with streaks and badges, and its own home-screen app icon. 20 sections and more than 760 automated tests. Nothing is collected or sent.",
+    "tech": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "SVG",
+      "Vitest",
+      "PWA"
+    ],
+    "image": "critical-facilities-sim.jpg",
+    "imageAlt": "Critical Facilities Simulator on a laptop showing the live plant with all systems normal, and two phone screens: walking up to live 480 volt gear with approach boundaries, and a battery room hazard hunt",
+    "url": "/critical-facilities-sim/",
+    "linkLabel": "See the simulator",
+    "featured": true
+  },
+  {
     "slug": "car-doctor",
     "title": "Car Doctor",
     "type": "Offline app + machine learning",
@@ -35,47 +76,6 @@
     "imageAlt": "Three Money Leak Finder phone screens: a monthly dashboard with money left over and 7 leaks found, the leak finder showing $5,295 a year slipping away, and a truck savings goal reached 2.2 months sooner by plugging leaks",
     "url": "/money-leak-finder/",
     "linkLabel": "See Money Leak Finder",
-    "featured": true
-  },
-  {
-    "slug": "critical-facilities-sim",
-    "title": "Critical Facilities Simulator",
-    "type": "Training simulator + web app",
-    "problem": "New data center techs learn power and cooling on live, high-stakes equipment, where a wrong breaker or a skipped lockout step can drop servers or hurt someone.",
-    "built": "A free, offline simulator of a generic data center, from the utility feed to the server rack and the cooling towers. Break things on purpose and watch the backups catch them, run scored maintenance procedures and emergency drills on a live plant model, and practice safety: approach boundaries, lockout order, hazard hunts and emergency cards. Version 1.0 adds deep dives on 21 equipment guides, 20 MOPs and 15 drills, shift mode, live rounds with analog gauges, utility power quality events and rack-by-rack hot spots. It also has 220 field tips, field calculators, a career ladder with 13 specialist branches, interview practice, a daily challenge with streaks and badges, and its own home-screen app icon. 20 sections and more than 760 automated tests. Nothing is collected or sent.",
-    "tech": [
-      "React",
-      "TypeScript",
-      "Vite",
-      "SVG",
-      "Vitest",
-      "PWA"
-    ],
-    "image": "critical-facilities-sim.jpg",
-    "imageAlt": "Critical Facilities Simulator on a laptop showing the live plant with all systems normal, and two phone screens: walking up to live 480 volt gear with approach boundaries, and a battery room hazard hunt",
-    "url": "/critical-facilities-sim/",
-    "linkLabel": "See the simulator",
-    "featured": true
-  },
-  {
-    "slug": "controls-academy",
-    "title": "Controls Academy",
-    "type": "Training app + PLC simulator",
-    "problem": "New maintenance and controls techs are expected to read prints, find faults and go online with a PLC, but most training assumes you already know the basics, costs a lot, or needs real equipment.",
-    "built": "A free, offline app that teaches PLCs and industrial controls from zero. 60 lessons in four levels, a real scan-cycle PLC you can program in ladder logic on a phone, the same logic in ten brands' addressing styles, and eight machines in 3D driven by your program. Fault Hunt hides 37 faults to find with a meter the safe way, scored on speed and safety. A reference section adds field devices in 3D, troubleshooting flowcharts, cheat sheets and brand guides. Every page scores 97–100 in Lighthouse on a phone, and 650+ automated tests check it on every change. Nothing is collected or sent.",
-    "tech": [
-      "React",
-      "TypeScript",
-      "Three.js",
-      "Vite",
-      "Vitest",
-      "Playwright",
-      "PWA"
-    ],
-    "image": "controls-academy.jpg",
-    "imageAlt": "Controls Academy on a laptop showing the PLC workbench with a 3D control panel and motor, and two phone screens: a fault hunt with a multimeter, and an emergency stop button in 3D",
-    "url": "/controls-academy/",
-    "linkLabel": "See Controls Academy",
     "featured": false
   },
   {
