@@ -9,8 +9,6 @@ import appIcon from '../assets/projects/money-leak-finder-icon.png';
 
 const appUrl = 'https://money-leak-finder.andycaylor.workers.dev/';
 
-// Flip to true once screenshot reading is switched on in the app.
-const readerLive = false;
 
 const features = [
   { icon: 'drop', title: 'Finds the leaks', text: 'Flags forgotten subscriptions, possible double charges, small buys that add up (fast food, gas station snacks, coffee), categories that jumped since last month, and fees. Each one shows what it costs this month and about how much per year.' },
@@ -20,9 +18,7 @@ const features = [
   { icon: 'clock', title: 'Coming up', text: 'Spots your recurring bills and subscriptions and shows what’s due in the next two weeks, so nothing sneaks up on you.' },
   { icon: 'trend', title: 'What investing could do', text: 'See what investing your leftover money each month could grow to over 5, 10, 20 and 30 years at a few example rates. Educational only, not financial advice.' },
   { icon: 'gears', title: 'Sorts itself', text: 'Every purchase lands in a category automatically. Fix one and it remembers that store from then on.' },
-  readerLive
-    ? { icon: 'camera' as const, title: 'Snap a screenshot', text: 'Take a screenshot of a pay stub, your bank app’s list, or a receipt. It reads the dates and amounts and lets you check them before saving. The picture is never saved.' }
-    : { icon: 'camera' as const, title: 'Type it or upload a CSV', text: 'Add a paycheck or purchase in seconds, or upload the spreadsheet (CSV) your bank lets you download. Reading screenshots of pay stubs and receipts is coming soon.' },
+  { icon: 'camera', title: 'Snap a screenshot', text: 'Take a screenshot of a pay stub, your bank app’s list, or a receipt. It reads the dates and amounts right on your phone, works with no signal, and lets you check every row before saving. The picture is never sent or saved.' },
   { icon: 'shield', title: 'Private by design', text: 'No bank logins, ever. Card and account numbers are hidden automatically, backups can be locked with a password, and an eye button hides your amounts in public.' },
 ] as const;
 
@@ -105,7 +101,7 @@ const steps = [
       <p class="eyebrow">Privacy</p>
       <h2 id="privacy-title">Your money data stays on your phone</h2>
       <p>No account, no bank login, no ads, no tracking. Your transactions, goals and settings are saved only on your phone, and you can back them up, export them, or delete everything any time in the app. It never asks for full account, card or routing numbers, and hides them automatically if one slips in.</p>
-      {readerLive && <p>If you use screenshot reading, the picture is shrunk and stripped of location data on your phone, sent over an encrypted connection to be read once, and never saved. You agree to that first with a checkbox.</p>}
+      <p>Screenshots are read on your phone by a reader built into the app. They are never sent anywhere and never saved.</p>
       <p class="muted">Money Leak Finder is an educational budgeting tool, not financial, tax or investment advice. Leak savings and investment numbers are estimates and examples, not promises.</p>
     </div>
   </section>
