@@ -1,0 +1,57 @@
+---
+/**
+ * The hero's monogram. The SVG poster is part of the HTML, so it paints with the first frame (no image
+ * request); its traces draw themselves in with CSS. On capable devices the 3D layer streams in over it
+ * (src/scripts/hero3d.ts). With Reduce Motion it is shown finished and still.
+ */
+import { STROKES, PADS, pathD } from '../lib/monogram';
+---
+<div class="mono" data-hero-stage role="img" aria-label="The Caylor Made Technologies monogram: the letters C and M drawn as circuit traces">
+  <svg class="mono__poster" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+    {STROKES.map((s, i) => (
+      <path d={pathD(s)} class={`mono__${s.kind}`} pathLength="1" data-i={i} />
+    ))}
+    {PADS.map(([x, y], i) => <circle cx={x} cy={y} r="2.6" class="mono__pad" data-i={i} />)}
+  </svg>
+</div>
+<script>
+  import '../scripts/hero3d';
+</script>
+
+<style>
+  .mono {
+    position: relative;
+    width: min(62vw, 20rem, 34svh);
+    aspect-ratio: 1;
+    margin-inline: auto;
+  }
+  /* Poster and canvas share the box; the canvas fades in over the poster once its first frame is drawn. */
+  .mono > :global(svg), .mono > :global(canvas) { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .mono > :global(canvas) { opacity: 0; transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+  .mono[data-live='true'] > :global(canvas) { opacity: 1; }
+  .mono > :global(svg) { transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+  .mono[data-live='true'] > :global(svg) { opacity: 0; }
+  .mono__poster { overflow: visible; }
+  /* The glow sits behind both layers, so it stays when the 3D view takes over. */
+  .mono::before { content: ''; position: absolute; inset: -4%; border-radius: 50%; background: radial-gradient(closest-side, rgba(48, 84, 181, 0.38), transparent); }
+  .mono__poster path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .mono__letter { stroke: #f2f5fa; stroke-width: 6.6; }
+  .mono__glyph { stroke: #6f8fe6; stroke-width: 3.2; }
+  .mono__trace { stroke: #3d63c9; stroke-width: 2.1; }
+  .mono__pad { fill: #0b0f14; stroke: #6f8fe6; stroke-width: 1.8; }
+
+  /* Draw-in: letters first, then traces run out and the pads light. CSS only; off under Reduce Motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    .mono__poster path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: mono-draw 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    .mono__letter { animation-duration: 1.1s !important; }
+    .mono__glyph { animation-delay: 0.45s; }
+    .mono__trace { animation-delay: calc(0.55s + var(--d, 0s)); }
+    .mono__pad { opacity: 0; transform-box: fill-box; transform-origin: center; animation: mono-pad 0.4s ease-out 1.25s forwards; }
+  }
+  @keyframes mono-draw { to { stroke-dashoffset: 0; } }
+  @keyframes mono-pad { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: none; } }
+  .mono__poster [data-i='6'] { --d: 0.05s; } .mono__poster [data-i='7'] { --d: 0.1s; } .mono__poster [data-i='8'] { --d: 0.15s; }
+  .mono__poster [data-i='9'] { --d: 0.2s; } .mono__poster [data-i='10'] { --d: 0.25s; } .mono__poster [data-i='11'] { --d: 0.3s; }
+  .mono__poster [data-i='12'] { --d: 0.35s; } .mono__poster [data-i='13'] { --d: 0.4s; } .mono__poster [data-i='14'] { --d: 0.45s; }
+  .mono__poster [data-i='15'] { --d: 0.5s; }
+</style>

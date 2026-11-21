@@ -1,176 +1,212 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import CircuitBackground from '../components/CircuitBackground.astro';
-import PlanCard from '../components/PlanCard.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import CtaBand from '../components/CtaBand.astro';
-import Icon from '../components/Icon.astro';
-import mark from '../assets/brand/logo-mark.png';
+import HeroMonogram from '../components/HeroMonogram.astro';
+import apps from '../data/apps.json';
 import pricing from '../data/pricing.json';
-import projects from '../data/projects.json';
 import site from '../data/site.json';
 
-const featured = projects.filter((p) => p.featured).slice(0, 3);
-const reasons = [
-  {
-    icon: 'chat',
-    title: 'You talk to the builder',
-    text: 'No sales team, no hand-offs. The person you talk to is the person writing your code.',
-  },
-  {
-    icon: 'split',
-    title: '50% to start, 50% on approval',
-    text: 'You only pay the rest once you’ve seen the finished work and you’re happy with it.',
-  },
-  {
-    icon: 'factory',
-    title: 'I know how real work gets done',
-    text: 'I come from industrial maintenance and plant operations. I build tools for the job, not for show.',
-  },
-] as const;
+// App screenshots (real screens from each app, 390x844).
+const shots = import.meta.glob<{ default: ImageMetadata }>('../assets/apps/*.png', { eager: true });
+const shot = (file: string) => shots[`../assets/apps/${file}`].default;
+const from = Math.min(...pricing.plans.map((p) => p.price));
+
+const builds = [
+  { title: 'Training & simulators', text: 'For techs learning PLCs, power and cooling: practice on a real model of the equipment before touching the real thing.' },
+  { title: 'Field apps', text: 'Logs, rounds and diagnostics that work with no signal, big targets for gloved hands, and data that stays on the device.' },
+  { title: 'Websites for local business', text: `Fast, clear sites that get you calls, from $${from}. You talk to the person building it.` },
+];
 ---
 <Base
-  title={`${site.name} | Websites & Custom Software in Hereford, TX`}
+  title={`${site.name} | Field-tested software for industrial and trades work`}
   exactTitle
-  description="Websites and custom business software for small and local businesses in Hereford and the Texas Panhandle. Launch pricing from $400. Free 15-minute consult."
+  description="Training simulators, field apps and websites built by a millwright turned software engineer in Hereford, Texas. Works offline, keeps your data on your device."
 >
   <section class="hero" aria-labelledby="hero-title">
-    <CircuitBackground seed={7} density={30} />
-    <div class="hero__glow" aria-hidden="true"></div>
-    <div class="container hero__inner">
-      <Image src={mark} alt="" width={132} densities={[1, 2]} format="webp" loading="eager" class="hero__mark" />
-      <p class="eyebrow">Web &amp; Software · Est. {site.founded}</p>
-      <h1 id="hero-title">Advanced Engineering. <span class="accent">Built Different.</span></h1>
-      <p class="lead hero__sub">Websites and custom software for local businesses, built by one engineer who talks to you directly.</p>
-      <div class="btn-row hero__ctas">
-        <a class="btn btn--primary" href="/contact/">Book a Free 15-Minute Consult</a>
-        <a class="btn btn--ghost" href="/services/">See Pricing</a>
+    <div class="hero__inner">
+      <HeroMonogram />
+      <div class="hero__copy">
+        <p class="eyebrow">{site.city}, Texas · Est. {site.founded}</p>
+        <h1 id="hero-title">Software for the people who keep things running.</h1>
+        <p class="hero__sub">Training simulators, field apps and websites, built by a millwright who now works in data center operations.</p>
+        <a class="btn btn--primary btn--lg" href="/contact/">Start a project</a>
       </div>
-      <p class="hero__area muted"><Icon name="pin" /> Hereford, TX &amp; the Texas Panhandle</p>
     </div>
+    <a class="hero__next" href="#build"><span class="visually-hidden">Scroll to </span>What I build <span aria-hidden="true">↓</span></a>
   </section>
 
-  <section class="section" aria-labelledby="services-title">
+  <section id="build" class="section story" aria-labelledby="build-title">
     <div class="container">
-      <div class="section-head section-head--center">
-        <p class="eyebrow">What I build</p>
-        <h2 id="services-title">Simple pricing. Real results.</h2>
-        <p class="pill">{pricing.launchLabel}</p>
+      <div class="story__head reveal">
+        <p class="eyebrow">What I build, and who it's for</p>
+        <h2 id="build-title">Field-tested software for industrial and trades work.</h2>
+        <p class="lead">Tools for plant floors, data halls, shops and the small businesses around them. Built to work where the work happens.</p>
       </div>
-      <div class="grid services-grid">
-        {pricing.plans.map((plan) => <div class="reveal"><PlanCard plan={plan} /></div>)}
-      </div>
-      <p class="care-note">
-        Add the <strong>{pricing.carePlan.name}</strong> for <strong>${pricing.carePlan.price}/{pricing.carePlan.per}</strong>: hosting, updates, fixes, and support.
-        <a href="/services/">See full pricing <span aria-hidden="true">→</span></a>
-      </p>
-    </div>
-  </section>
-
-  <section class="section section--alt" aria-labelledby="why-title">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Why work with me</p>
-        <h2 id="why-title">One engineer. Straight answers.</h2>
-      </div>
-      <div class="grid why-grid">
-        {reasons.map((r) => (
-          <div class="why reveal">
-            <div class="icon-badge"><Icon name={r.icon} /></div>
-            <h3>{r.title}</h3>
-            <p>{r.text}</p>
-          </div>
+      <ul class="builds" role="list">
+        {builds.map((b) => (
+          <li class="build reveal"><h3>{b.title}</h3><p>{b.text}</p></li>
         ))}
-      </div>
+      </ul>
+      <p class="story__link reveal"><a href="/services/">Services and pricing <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="work-title">
+  <section id="apps" class="section section--alt story" aria-labelledby="apps-title">
     <div class="container">
-      <div class="section-head work-head">
-        <div>
-          <p class="eyebrow">Featured projects</p>
-          <h2 id="work-title">Built for real people and real businesses</h2>
-        </div>
-        <a class="btn btn--ghost" href="/work/">See all work</a>
+      <div class="story__head reveal">
+        <p class="eyebrow">Apps</p>
+        <h2 id="apps-title">Five apps, all live.<br /> Try one now.</h2>
+        <p class="lead">Free, installable and built to work offline. No accounts, no ads, no tracking.</p>
       </div>
-      <div class="grid work-grid">
-        {featured.map((p) => <div class="reveal"><ProjectCard project={p} /></div>)}
+      <ul class="apps" role="list">
+        {apps.map((a) => (
+          <li class={`app reveal app--${a.slug}`}>
+            <div class="app__shot">
+              <Image src={shot(a.image)} alt={a.imageAlt} widths={[240, 360, 480]} sizes="(min-width: 64rem) 15rem, (min-width: 40rem) 40vw, 72vw" format="webp" loading="lazy" />
+            </div>
+            <div class="app__body">
+              <p class="app__kind">{a.kind}</p>
+              <h3>{a.name}</h3>
+              <p class="app__value">{a.value}</p>
+              <div class="app__actions">
+                {a.url
+                  ? <a class="app__launch" href={a.url} rel="noopener" target="_blank">Launch<span class="visually-hidden"> {a.name} (opens in a new tab)</span> <span aria-hidden="true">↗</span></a>
+                  : <span class="app__soon">Coming soon</span>}
+                {a.more && <a class="app__more" href={a.more}>Details<span class="visually-hidden"> about {a.name}</span></a>}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="trust" class="section story" aria-labelledby="trust-title">
+    <div class="container trust">
+      <div class="story__head reveal">
+        <p class="eyebrow">Why trust me</p>
+        <h2 id="trust-title">Built by someone who has turned the wrenches.</h2>
+      </div>
+      <div class="trust__text reveal">
+        <p class="lead">I came up as a millwright in a flour mill: motors, drives, conveyors, sifters, and the dust that comes with them.</p>
+        <p>Today I work in data center critical facilities operations, keeping power and cooling running for servers that can't go down.</p>
+        <p>I build software for that world because I know what fails at 3 a.m., what gloves do to a touchscreen, and why a log has to work with no signal. You talk to me directly, start to finish.</p>
+        <p class="trust__more"><a href="/about/">More about me <span aria-hidden="true">→</span></a></p>
       </div>
     </div>
   </section>
 
-  <CtaBand />
+  <section id="contact" class="section contact" aria-labelledby="contact-title">
+    <div class="container contact__inner reveal">
+      <h2 id="contact-title">Have a job that needs a better tool?</h2>
+      <p class="lead">Tell me what it is. I'll tell you straight whether software can help.</p>
+      <a class="btn btn--primary btn--lg" href="/contact/">Start a project</a>
+    </div>
+  </section>
 </Base>
 
 <style>
   .hero {
     position: relative;
-    overflow: hidden;
-    min-height: min(92svh, 52rem);
+    min-height: calc(100svh - var(--header-h));
     display: grid;
     align-items: center;
-    padding-block: clamp(3rem, 8vw, 6rem);
-  }
-  .hero__glow {
-    position: absolute;
-    inset: -20% -10% auto;
-    height: 80%;
-    background: radial-gradient(closest-side, rgba(30, 111, 255, 0.22), transparent);
-    pointer-events: none;
+    padding-block: clamp(1.5rem, 5vh, 3.5rem) 3.5rem;
+    background:
+      radial-gradient(60rem 36rem at 50% 30%, rgba(48, 84, 181, 0.22), transparent 70%),
+      linear-gradient(180deg, #080b10 0%, var(--bg) 100%);
+    overflow: hidden;
   }
   .hero__inner {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: min(100% - 2 * var(--gutter), var(--max));
+    margin-inline: auto;
+    display: grid;
+    justify-items: center;
     text-align: center;
-    gap: 1.1rem;
+    gap: clamp(1.25rem, 3.5vh, 2.25rem);
   }
-  .hero__mark {
-    width: clamp(96px, 22vw, 132px);
-    height: auto;
-    filter: drop-shadow(0 0 28px rgba(61, 139, 255, 0.45));
+  .hero__copy { display: grid; justify-items: center; gap: 1rem; }
+  .hero h1 {
+    max-width: 18ch;
+    font-size: clamp(2.1rem, 1.3rem + 3.6vw, 4.2rem);
+    line-height: 1.04;
+    letter-spacing: -0.025em;
   }
-  .hero h1 { max-width: 16ch; font-size: clamp(2.3rem, 1.5rem + 4vw, 4.4rem); }
-  .hero h1 .accent { color: var(--blue-glow); text-shadow: 0 0 34px rgba(61, 139, 255, 0.45); }
-  .hero__sub { max-width: 36rem; }
-  .hero__ctas { justify-content: center; margin-top: 0.5rem; }
-  .hero__area { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; }
-  .hero__area :global(svg) { width: 16px; height: 16px; color: var(--blue-glow); }
-
+  .hero__sub { max-width: 34rem; font-size: var(--step-1); color: var(--text-body); line-height: 1.5; }
+  .hero__copy .btn { margin-top: 0.5rem; }
+  .hero__next {
+    position: absolute; left: 50%; bottom: 1rem; transform: translateX(-50%);
+    min-height: 44px; display: inline-flex; align-items: center; gap: 0.4rem; padding-inline: 0.75rem;
+    color: var(--text-muted); font-size: 0.85rem; text-decoration: none; letter-spacing: 0.04em;
+  }
+  .hero__next:hover { color: var(--text-heading); }
+  @media (min-width: 64rem) {
+    .hero__inner { grid-template-columns: 1.05fr 1fr; text-align: left; justify-items: start; align-items: center; gap: 4rem; }
+    .hero__inner > :global(.mono) { order: 2; width: min(34rem, 44vw, 70svh); justify-self: center; }
+    .hero__copy { justify-items: start; }
+  }
   @media (prefers-reduced-motion: no-preference) {
-    .hero__inner > * { animation: hero-in 0.8s var(--ease) both; }
-    .hero__inner > :nth-child(2) { animation-delay: 0.08s; }
-    .hero__inner > :nth-child(3) { animation-delay: 0.16s; }
-    .hero__inner > :nth-child(4) { animation-delay: 0.24s; }
-    .hero__inner > :nth-child(5) { animation-delay: 0.32s; }
-    .hero__inner > :nth-child(6) { animation-delay: 0.4s; }
+    .hero__copy > * { animation: hero-in 0.9s var(--ease) both; }
+    .hero__copy > :nth-child(2) { animation-delay: 0.05s; }
+    .hero__copy > :nth-child(3) { animation-delay: 0.12s; }
+    .hero__copy > :nth-child(4) { animation-delay: 0.2s; }
   }
-  @keyframes hero-in { from { opacity: 0; transform: translateY(14px); } }
+  @keyframes hero-in { from { opacity: 0; transform: translateY(12px); } }
 
-  .services-grid { --min: 17rem; }
-  .services-grid > div { display: grid; }
-  .care-note {
-    margin-top: 2rem;
-    text-align: center;
-    color: var(--text-body);
+  .story__head { max-width: 44rem; display: grid; gap: 0.9rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .story__head h2 { font-size: var(--step-4); line-height: 1.08; letter-spacing: -0.02em; }
+  .builds { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+  .build { padding: 1.4rem 1.4rem 1.5rem; border-top: 2px solid var(--blue); background: linear-gradient(180deg, rgba(48, 84, 181, 0.08), transparent 70%); border-radius: 0 0 var(--radius) var(--radius); }
+  .build h3 { font-size: var(--step-1); margin-bottom: 0.45rem; }
+  .story__link { margin-top: 1.75rem; }
+
+  .apps { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
+  @media (min-width: 40rem) { .apps { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 64rem) {
+    .apps { grid-template-columns: repeat(3, 1fr); }
+    /* The flagship spans two columns (image beside the text), so five cards make two full rows. */
+    .app--controls-academy { grid-column: span 2; grid-template-rows: none; grid-template-columns: 1fr 1fr; }
+    .app--controls-academy .app__shot { height: 100%; min-height: 17rem; }
+    .app--controls-academy .app__body { align-content: center; padding: 2rem; }
+    .app--controls-academy h3 { font-size: var(--step-2); }
   }
-  .care-note a { white-space: nowrap; margin-left: 0.25rem; }
-
-  .why-grid { --min: 16rem; }
-  .why h3 { margin-bottom: 0.4rem; }
-
-  .work-head {
-    max-width: none;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: end;
-    justify-content: space-between;
-    gap: 1rem;
+  .app {
+    --app: var(--blue);
+    position: relative; display: grid; grid-template-rows: auto 1fr; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 14px 36px rgba(0, 0, 0, 0.3);
   }
-  .work-head > div > * + * { margin-top: 0.85rem; }
-  .work-grid { --min: 20rem; }
-  .work-grid > div { display: grid; }
+  .app::before { content: ''; position: absolute; inset: 0 0 auto; height: 3px; background: var(--app); }
+  .app--controls-academy { --app: #3d8bff; } .app--critical-facilities-sim { --app: #b48cff; } .app--car-doctor { --app: #f5a524; }
+  .app--money-leak-finder { --app: #22d3ee; } .app--dust-log { --app: #3ddc97; }
+  .app__shot {
+    height: 15rem; overflow: hidden; display: grid; justify-items: center; padding-top: 1.25rem;
+    background: radial-gradient(80% 90% at 50% 100%, color-mix(in srgb, var(--app) 22%, transparent), transparent 70%), #0a0d12;
+  }
+  .app__shot :global(img) { width: 62%; max-width: 15rem; height: auto; border-radius: 18px 18px 0 0; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 18px 40px rgba(0, 0, 0, 0.55); }
+  .app__body { padding: 1.2rem 1.3rem 1.3rem; display: grid; gap: 0.45rem; align-content: start; }
+  .app__kind { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--app); }
+  .app h3 { font-size: var(--step-1); }
+  .app__value { color: var(--text-body); }
+  .app__actions { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; margin-top: 0.4rem; }
+  .app__launch, .app__more { min-height: 44px; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 700; text-decoration: none; }
+  .app__launch {
+    padding: 0 1.05rem; border-radius: 999px; color: #0b0f14; background: var(--app);
+    transition: transform 0.15s var(--ease), filter 0.15s;
+  }
+  .app__launch:hover { filter: brightness(1.08); }
+  .app__launch:active { transform: scale(0.97); }
+  .app__more { color: var(--text-heading); padding-inline: 0.25rem; }
+  .app__more:hover { color: var(--blue-glow); }
+  .app__soon { color: var(--text-muted); font-weight: 600; }
+
+  .trust { display: grid; gap: 1rem; }
+  @media (min-width: 56rem) { .trust { grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start; } }
+  .trust__text { display: grid; gap: 1rem; max-width: 40rem; }
+  .trust__more { margin-top: 0.5rem; }
+
+  .contact { background: radial-gradient(50rem 24rem at 50% 100%, rgba(48, 84, 181, 0.22), transparent 70%); }
+  .contact__inner { display: grid; justify-items: center; text-align: center; gap: 1rem; }
+  .contact h2 { font-size: var(--step-4); max-width: 20ch; line-height: 1.08; letter-spacing: -0.02em; }
+  .contact .btn { margin-top: 0.75rem; }
 </style>

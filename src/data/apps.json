@@ -1,0 +1,57 @@
+[
+  {
+    "slug": "controls-academy",
+    "name": "Controls Academy",
+    "kind": "PLC & controls training",
+    "value": "Learn PLCs from zero: a real scan cycle, ladder logic on your phone, and machines in 3D that run your program.",
+    "accent": "#3d8bff",
+    "image": "controls-academy.png",
+    "imageAlt": "Controls Academy on a phone: the PLC workbench with a motor start/stop station and its operator buttons",
+    "url": "https://caylor-made-technologies.github.io/controls-academy/",
+    "more": "/controls-academy/"
+  },
+  {
+    "slug": "critical-facilities-sim",
+    "name": "Critical Facilities Simulator",
+    "kind": "Data center power & cooling",
+    "value": "Run a data center's power and cooling, break it on purpose, and learn the safe way to bring it back.",
+    "accent": "#b48cff",
+    "image": "critical-facilities-sim.png",
+    "imageAlt": "Critical Facilities Simulator on a phone: the live plant from utility to chip, all systems normal, with run controls",
+    "url": "https://caylor-made-technologies.github.io/critical-facilities-sim/",
+    "more": "/critical-facilities-sim/"
+  },
+  {
+    "slug": "car-doctor",
+    "name": "Car Doctor",
+    "kind": "Vehicle diagnosis",
+    "value": "Describe the noise. It tells you what's likely wrong, whether it's safe to drive, and where to look.",
+    "accent": "#f5a524",
+    "image": "car-doctor.png",
+    "imageAlt": "Car Doctor on a phone: worn brake pads, Can I drive it?, and an engine bay with the front brakes lit in amber",
+    "url": "https://caylor-made-technologies.github.io/car-doctor/",
+    "more": "/car-doctor/"
+  },
+  {
+    "slug": "money-leak-finder",
+    "name": "Money Leak Finder",
+    "kind": "Private budgeting",
+    "value": "Finds the subscriptions, fees and small buys draining your pay. Everything stays on your phone.",
+    "accent": "#22d3ee",
+    "image": "leak-trace.png",
+    "imageAlt": "Money Leak Finder on a phone: a pipe run with the biggest leak glowing, and $3,196 a year slipping away",
+    "url": "https://money-leak-finder.andycaylor.workers.dev/",
+    "more": "/money-leak-finder/"
+  },
+  {
+    "slug": "dust-log",
+    "name": "Mill Dust Log",
+    "kind": "Plant housekeeping",
+    "value": "Combustible-dust rounds on a phone, with a plant-floor view of what's dusty and overdue. Works offline.",
+    "accent": "#3ddc97",
+    "image": "dust-log.png",
+    "imageAlt": "Mill Dust Log on a phone: a plant floor with zones colored by dust left and how overdue, and a legend",
+    "url": "https://caylor-made-technologies.github.io/grain-mill-dust-log/",
+    "more": null
+  }
+]
