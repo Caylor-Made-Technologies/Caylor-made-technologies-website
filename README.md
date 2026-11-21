@@ -1,6 +1,20 @@
 # Caylor Made Technologies website
 
-The official site for Caylor Made Technologies: websites and custom software for small and local businesses in Hereford, TX and the Texas Panhandle.
+The official site for Caylor Made Technologies: field-tested software for industrial and trades work, plus websites for small and local businesses in Hereford, TX and the Texas Panhandle.
+
+Live: https://caylor-made-technologies.pages.dev
+
+<p>
+  <img src="docs/screenshots/after-home-1440.png" alt="Home page on desktop: headline, Start a project, and the CM circuit monogram in 3D" width="560">
+  <img src="docs/screenshots/after-home-390.png" alt="Home page on a phone" width="180">
+</p>
+
+Scroll-through recordings: [desktop](docs/recordings/home-desktop.webm) · [phone 390×844](docs/recordings/home-phone-390x844.webm)
+
+**Home page:** a full-screen hero (the CM monogram's traces draw themselves in, then a 3D version streams in over it on capable devices), then four short sections: what I build and who it's for, the five apps (each launches the live app), why trust me, and one contact action.
+- The monogram is one set of paths (`src/lib/monogram.ts`) drawn two ways: an inline SVG poster that paints with the HTML (no image request), and a three.js scene (`src/three/monogramScene.ts`, its own ~131 KB chunk) loaded after the draw-in. Weak devices (≤ 4 GB / ≤ 4 cores), Reduce Motion and no-WebGL keep the poster. Add `?3d=1` / `?3d=0` to force either.
+- App cards come from `src/data/apps.json` (name, one-liner, accent, screenshot, live URL). An app with no `url` shows "Coming soon".
+- Fonts are subset to the characters the site uses (`tools/subset-fonts.py`; sources in `assets/fonts/`).
 
 - **Stack:** [Astro](https://astro.build) (static pages) + plain CSS. The only server code is the contact form function.
 - **Hosting:** Cloudflare Pages (static files + one Pages Function).
@@ -17,6 +31,8 @@ npm install
 npm run dev        # http://localhost:4321  (pages only; the form needs the Cloudflare preview below)
 npm run build      # builds the site into dist/
 npm test           # contact form tests (no keys or internet needed)
+npm run e2e        # browser checks on dist/ (run npm run build first): CSP, 3D budget, axe on every page, 320 px
+RECORD=1 npm run e2e   # also records the scroll-through videos into docs/recordings/
 npm run check      # type check
 ```
 
