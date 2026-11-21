@@ -51,6 +51,7 @@ export function mount(canvas, { onLost }) {
   sweep.position.set(-4, 1.5, 2.5);
   scene.add(sweep);
 
+  stage.warm();
   // Intro: pulses run out along the traces (staggered), the sweep crosses, then rest.
   let t = 0;
   root.rotation.set(-0.12, 0.28, 0);
@@ -89,7 +90,7 @@ export function mount(canvas, { onLost }) {
 
   return {
     dispose() { removeEventListener('pointermove', onMove); stage.dispose(); },
-    frames: stage.frames, stats: stage.stats, workStats: stage.workStats,
+    frames: stage.frames, stats: stage.stats, workStats: stage.workStats, firstFrame: stage.firstFrame,
   };
 }
 

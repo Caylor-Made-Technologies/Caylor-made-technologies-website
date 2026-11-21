@@ -21,7 +21,8 @@ if (stage) {
         const view = m.mount(canvas, {
           onLost: () => { view.dispose(); canvas.remove(); stage.dataset.live = 'false'; stage.dataset.mode = '2d:context-lost'; },
         });
-        requestAnimationFrame(() => { stage.dataset.live = 'true'; stage.dataset.mode = '3d'; });
+        stage.dataset.mode = '3d';
+        view.firstFrame.then(() => { stage.dataset.live = 'true'; });
         if (location.search.includes('debug3d')) (window as any).__scene3d = view;
       })
       .catch(() => { stage.dataset.mode = '2d:load-failed'; });
